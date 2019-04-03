@@ -46,5 +46,3 @@ fdescribe('[Service]: Auth', () => {
     });
   });
 });
-
-// TODO: Test auth services

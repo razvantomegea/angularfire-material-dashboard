@@ -584,13 +584,10 @@ export const HEALTHY_HABITS_LEVELS: HealthyHabitsLevel[] = [
   styleUrls: ['./healthy-habits.component.scss']
 })
 export class HealthyHabitsComponent extends ComponentDestroyed {
-  public readonly guideLevel$: Observable<HealthyHabitsLevel> = this.store.pipe(select(fromUser.getUserLevel), takeUntil(this.isDestroyed$));
+  public readonly guideLevel$: Observable<HealthyHabitsLevel>;
 
   constructor(public store: Store<State>) {
     super();
+    this.guideLevel$ = this.store.pipe(select(fromUser.getUserLevel), takeUntil(this.isDestroyed$));
   }
-
-  // TODO: Details page for each recommendation
-  // TODO: Keep track of daily healthy-habits completions and make recommendations to upgrade/downgrade level
-  // TODO: Move each healthy-habits sections to module pages (e.g. nutrition recommendations to Nutrition Module)
 }

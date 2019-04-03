@@ -17,10 +17,15 @@ The current scope of the dashboard is health and fitness tracker, with the purpo
 - Phone number change;
 - Profile update (Username, avatar, and other custom information);
 - Day/Night mode switch;
-- Dynamic forms.
+- Dynamic forms;
+- Body composition tracking;
+- Movement tracking;
+- Nutrition tracking;
+- Sleep tracking;
+- Biomarkers tracking (Blood ketones, lipids, glucose, and pressure).
 
 ## Preview
-![Preivew](http://vma.isocked.com//static/preview/01_preview.png)
+![Preivew](https://github.com/razvantomegea/angularfire-material-dashboard/blob/master/src/assets/img/preview.png)
 
 ## Project Structure
 ``` bash
