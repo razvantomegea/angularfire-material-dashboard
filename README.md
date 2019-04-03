@@ -27,6 +27,9 @@ The current scope of the dashboard is health and fitness tracker, with the purpo
 ## Preview
 ![Preivew](https://github.com/razvantomegea/angularfire-material-dashboard/blob/master/src/assets/img/preview.png)
 
+## Demo
+[Checkout demo](https://angularfire-material-dashboard.firebaseapp.com)
+
 ## Project Structure
 ``` bash
 ├───.idea

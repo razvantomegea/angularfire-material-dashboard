@@ -20,12 +20,6 @@ const routes: Routes = [
           title: 'Healthy Habits'
         }
       }, {
-        path: 'getting-started',
-        loadChildren: 'app/dashboard/getting-started/getting-started.module#GettingStartedModule',
-        data: {
-          title: 'Getting Started'
-        }
-      }, {
         path: 'body-composition',
         loadChildren: 'app/dashboard/body-composition/body-composition.module#BodyCompositionModule',
         data: {
@@ -48,12 +42,6 @@ const routes: Routes = [
         loadChildren: 'app/dashboard/sleep/sleep.module#SleepModule',
         data: {
           title: 'Sleep'
-        }
-      }, {
-        path: 'stress',
-        loadChildren: 'app/dashboard/stress/stress.module#StressModule',
-        data: {
-          title: 'Stress'
         }
       }, {
         path: 'blood-glucose',
@@ -92,26 +80,15 @@ const routes: Routes = [
           title: 'Foods database'
         }
       }, {
-        path: 'exercises',
-        loadChildren: 'app/dashboard/exercises/exercises.module#ExercisesModule',
-        data: {
-          title: 'Exercises'
-        }
-      }, {
-        path: 'diagnosis',
-        loadChildren: 'app/dashboard/diagnosis/diagnosis.module#DiagnosisModule',
-        data: {
-          title: 'Diagnosis'
-        }
-      }, {
         path: 'settings',
         loadChildren: 'app/dashboard/settings/settings.module#SettingsModule',
         data: {
           title: 'Settings'
         }
       }, {
-        path: '', loadChildren: 'app/dashboard/overview/overview.module#OverviewModule', data: {
-          title: 'Overview'
+        path: '', loadChildren: 'app/dashboard/settings/settings.module#SettingsModule',
+        data: {
+          title: 'Settings'
         }
       }
     ]
