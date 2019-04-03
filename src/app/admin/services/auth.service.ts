@@ -551,10 +551,7 @@ export class AuthService {
           userInfo.bio.goal,
           userInfo.bio.level,
           userInfo.bio.summary,
-          userInfo.bio.motherHood,
-          userInfo.bio.constitution
-          // userInfo.bio.metabolicType,
-          // userInfo.bio.geneticType
+          userInfo.bio.motherHood
         )
       );
     }

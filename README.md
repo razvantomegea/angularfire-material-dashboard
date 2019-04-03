@@ -301,12 +301,6 @@ Run `npm run pack:osx|pack:win|pack:nix` to build and package the project for de
 [Electron Packager](https://electronjs.org/docs/tutorial/application-packaging). The build 
 artifacts will be stored in the `dist/platforms/` directory.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-## References
-
 ## Donate
 Did you find this project useful and interesting? I worked hard on it...
 [Paypal Me](https://paypal.me/razvantomegea)

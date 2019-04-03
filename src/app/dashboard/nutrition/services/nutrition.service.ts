@@ -268,8 +268,8 @@ export class NutritionService extends DataService<Diet> {
             completedNutrient.unit,
             Math.round((completedNutrient.value * 100) / (requiredNutrient.value || 1)),
             completedNutrient.nutrient_id
-            )
-          ;
+          )
+            ;
           Reflect.set(nutrition, nutrientKey, remainingNutrient);
         }
 
@@ -1885,34 +1885,9 @@ export class NutritionService extends DataService<Diet> {
     energyConsumption: number,
     intensePhysicalActivity?: boolean
   ): number {
-    switch (userInfo.bio.constitution.dominantDosha) {
-      case 'Vata-Pitta-Kapha':
-        return (
-          ((intensePhysicalActivity ? 0.32 : 0.27) * energyConsumption) / 4
-        );
-
-      case 'Vata-Pitta':
-        return ((intensePhysicalActivity ? 0.25 : 0.2) * energyConsumption) / 4;
-
-      case 'Pitta-Kapha':
-        return (
-          ((intensePhysicalActivity ? 0.38 : 0.33) * energyConsumption) / 4
-        );
-
-      case 'Vata-Kapha':
-        return (
-          ((intensePhysicalActivity ? 0.33 : 0.28) * energyConsumption) / 4
-        );
-
-      case 'Kapha':
-        return ((intensePhysicalActivity ? 0.45 : 0.4) * energyConsumption) / 4;
-
-      case 'Vata':
-        return ((intensePhysicalActivity ? 0.2 : 0.15) * energyConsumption) / 4;
-
-      case 'Pitta':
-        return ((intensePhysicalActivity ? 0.3 : 0.25) * energyConsumption) / 4;
-    }
+    return (
+      ((intensePhysicalActivity ? 0.32 : 0.27) * energyConsumption) / 4
+    );
   }
 
   private [`calculate${NutrientNames['Fiber, total dietary']}Requirement`](
@@ -2657,34 +2632,9 @@ export class NutritionService extends DataService<Diet> {
     energyConsumption: number,
     intensePhysicalActivity?: boolean
   ): number {
-    switch (userInfo.bio.constitution.dominantDosha) {
-      case 'Vata-Pitta-Kapha':
-        return (
-          ((intensePhysicalActivity ? 0.18 : 0.33) * energyConsumption) / 9
-        );
-
-      case 'Vata-Pitta':
-        return ((intensePhysicalActivity ? 0.15 : 0.3) * energyConsumption) / 9;
-
-      case 'Pitta-Kapha':
-        return (
-          ((intensePhysicalActivity ? 0.22 : 0.37) * energyConsumption) / 9
-        );
-
-      case 'Vata-Kapha':
-        return (
-          ((intensePhysicalActivity ? 0.17 : 0.32) * energyConsumption) / 9
-        );
-
-      case 'Kapha':
-        return ((intensePhysicalActivity ? 0.25 : 0.4) * energyConsumption) / 9;
-
-      case 'Vata':
-        return ((intensePhysicalActivity ? 0.1 : 0.25) * energyConsumption) / 9;
-
-      case 'Pitta':
-        return ((intensePhysicalActivity ? 0.2 : 0.35) * energyConsumption) / 9;
-    }
+    return (
+      ((intensePhysicalActivity ? 0.18 : 0.33) * energyConsumption) / 9
+    );
   }
 
   /**
@@ -2843,27 +2793,6 @@ export class NutritionService extends DataService<Diet> {
     energyConsumption: number,
     intensePhysicalActivity?: boolean
   ): number {
-    switch (userInfo.bio.constitution.dominantDosha) {
-      case 'Vata-Pitta-Kapha':
-        return ((intensePhysicalActivity ? 0.5 : 0.4) * energyConsumption) / 4;
-
-      case 'Vata-Pitta':
-        return ((intensePhysicalActivity ? 0.6 : 0.5) * energyConsumption) / 4;
-
-      case 'Pitta-Kapha':
-        return ((intensePhysicalActivity ? 0.4 : 0.3) * energyConsumption) / 4;
-
-      case 'Vata-Kapha':
-        return ((intensePhysicalActivity ? 0.5 : 0.4) * energyConsumption) / 4;
-
-      case 'Kapha':
-        return ((intensePhysicalActivity ? 0.3 : 0.2) * energyConsumption) / 4;
-
-      case 'Vata':
-        return ((intensePhysicalActivity ? 0.7 : 0.6) * energyConsumption) / 4;
-
-      case 'Pitta':
-        return ((intensePhysicalActivity ? 0.5 : 0.4) * energyConsumption) / 4;
-    }
+    return ((intensePhysicalActivity ? 0.5 : 0.4) * energyConsumption) / 4;
   }
 }
