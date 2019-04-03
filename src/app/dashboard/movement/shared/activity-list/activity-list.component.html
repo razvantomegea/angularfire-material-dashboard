@@ -1,0 +1,24 @@
+<mat-list *ngIf="!dense">
+  <mat-list-item *ngFor="let activity of activities; let idx = index">
+    <p fxFlex mat-line>{{ activity.timestamp || activity.name}}</p>
+    <span fxFlex mat-line>{{ activity.duration }} minutes ({{ activity.energyExpenditure }} kcal)</span>
+    <button (click)="onEditActivity(activity)" mat-icon-button>
+      <mat-icon color="accent">create</mat-icon>
+    </button>
+    <button (click)="onRemoveActivity(idx)" mat-icon-button>
+      <mat-icon color="warn">delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
+<mat-list *ngIf="!!dense" dense>
+  <mat-list-item *ngFor="let activity of activities; let idx = index">
+    <p fxFlex mat-line>{{ activity.timestamp || activity.name}}</p>
+    <span fxFlex mat-line>{{ activity.duration }} minutes ({{ activity.energyExpenditure }} kcal)</span>
+    <button (click)="onEditActivity(activity)" mat-icon-button>
+      <mat-icon color="accent">create</mat-icon>
+    </button>
+    <button (click)="onRemoveActivity(idx)" mat-icon-button>
+      <mat-icon color="warn">delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>

@@ -1,0 +1,49 @@
+@import 'src/app-variables';
+
+@mixin sidenav {
+  width: 256px;
+
+  .mat-divider {
+    margin: 8px 0;
+  }
+
+  .mat-list-item {
+    &.active {
+      color: $primary-light;
+    }
+
+    &:not(.active) {
+      color: $dark-color-light !important;
+    }
+  }
+
+    p.mat-line {
+      font-size: 14px;
+    }
+}
+
+::ng-deep .light-blue-theme .mat-sidenav {
+  @include sidenav;
+}
+
+::ng-deep .dark-blue-theme .mat-sidenav {
+  @include sidenav;
+  background-color: $dark-content;
+}
+
+//::ng-deep .dark-blue-theme .mat-drawer {
+//  background-color: $dark-content;
+//}
+
+.mat-drawer-container {
+  background: $primary-lightest !important;
+  height: calc(100% - 64px);
+
+  @media screen and (max-width: 599px) {
+    height: calc(100% - 56px);
+  }
+
+  &.mobile-sidenav {
+    z-index: 3;
+  }
+}

@@ -1,0 +1,17 @@
+<div fxLayout="row wrap" fxLayoutGap.gt-xs="12px">
+	<div *ngFor="let subject of subjects" class="card-section" fxFlex="auto" fxFlex.xs="100%">
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>{{ subject.title }}</mat-card-title>
+			</mat-card-header>
+			<img matCardImage [src]="subject.image">
+			<mat-card-content>
+				<span class="credit">Photo Credit: {{ subject.imageCredit }}</span>
+				<p>{{ subject.summary }}</p>
+			</mat-card-content>
+			<mat-card-actions align="start">
+				<button color="accent" mat-button (click)="onLearn(subject.url)">LEARN</button>
+			</mat-card-actions>
+		</mat-card>
+	</div>
+</div>

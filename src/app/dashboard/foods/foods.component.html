@@ -1,0 +1,39 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap.gt-xs="24px">
+	<div class="card-section" fxFlex="60%" fxFlex.xs="100%" fxLayout="column" fxLayoutGap.gt-xs="24px">
+		<div>
+			<app-search-box [placeholder]="'Search foods...'" [value]="searchQuery" (search)="onSearch($event)"></app-search-box>
+		</div>
+		<mat-card class="card--no-padding">
+			<mat-card-content>
+				<mat-tab-group>
+					<mat-tab label="USDA Foods">
+						<app-foods-list
+										(select)="onSelectFood($event)"
+										[isPending]="isPending"
+										[list]="usdaFoods"
+										[noData]="noUSDAFoods"
+						></app-foods-list>
+					</mat-tab>
+					<mat-tab label="My foods">
+						<app-foods-list
+										(select)="onSelectFood($event)"
+										[isPending]="isPending"
+										[list]="foods"
+										[noData]="noFoods"
+						></app-foods-list>
+					</mat-tab>
+				</mat-tab-group>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div class="card-section" fxFlex="30%" fxFlex.xs="100%" fxLayout="column">
+		<app-food-filter (filterFoodGroup)="onFilterFoodGroup($event)"
+		                 (filterNutrient)="onFilterNutrient($event)"
+		                 [foodGroups]="foodGroups"
+		                 [nutrients]="nutrients$ | async"
+		></app-food-filter>
+	</div>
+</div>
+<button (click)="onAddFood()" class="fab fab--bottom-right" color="accent" mat-button mat-fab>
+	<mat-icon [matTooltip]="'Add food'">add</mat-icon>
+</button>

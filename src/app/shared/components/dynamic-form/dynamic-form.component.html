@@ -1,0 +1,40 @@
+<!--<form (ngSubmit)="onSubmit($event)"-->
+      <!--*ngIf="isCardContent"-->
+      <!--[formGroup]="form"-->
+      <!--role="form"-->
+<!--&gt;-->
+	<!--<mat-card-content [fxLayout]="flexLayout?.default"-->
+	                  <!--[fxLayoutAlign]="flexLayoutAlign?.default"-->
+	                  <!--[fxLayoutGap]="flexLayoutGap?.default"-->
+	                  <!--[ngClass]="classes">-->
+		<!--<ng-container-->
+						<!--*ngFor="let config of configs"-->
+						<!--[config]="config"-->
+						<!--[control]="form.get(config.formControlName)"-->
+						<!--[group]="form"-->
+						<!--appDynamicFormField-->
+		<!--&gt;-->
+		<!--</ng-container>-->
+	<!--</mat-card-content>-->
+	<!--<ng-content></ng-content>-->
+<!--</form>-->
+<form (ngSubmit)="onSubmit($event)"
+      [attr.fxFlex]="flex?.default"
+      [formGroup]="form"
+      [fxLayout]="flexLayout?.default"
+      [fxLayoutAlign]="flexLayoutAlign?.default"
+      [fxLayoutGap]="flexLayoutGap?.default"
+      [ngClass]="classes"
+      class="dynamic-form"
+      role="form"
+>
+	<ng-container
+					*ngFor="let config of configs"
+					[config]="config"
+					[control]="form.get(config.formControlName)"
+					[group]="form"
+					appDynamicFormField
+	>
+	</ng-container>
+	<ng-content></ng-content>
+</form>

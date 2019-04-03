@@ -1,0 +1,87 @@
+@import '~@angular/material/theming';
+
+$twitter-dark-primary-darker: #141d26;
+$twitter-dark-primary: #1b2836;
+$twitter-dark-primary-lighter :#2c4158;
+$twitter-dark-primary-light :#243447;
+
+$fd-electricblue: (
+  50: #e6e7ff,
+  100: #c1c3fe,
+  200: #989bfe,
+  300: #4285f4,
+  400: #5055fd,
+  500: #3137fd,
+  600: #2c31fd,
+  700: #252afc,
+  800: #1f23fc,
+  900: #1316fc,
+  A100: #ffffff,
+  A200: #f6f7ff,
+  A400: #c3c4ff,
+  A700: #aaabff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #6149b7,
+    400 : $twitter-dark-primary-lighter, // Background
+    500 : $twitter-dark-primary-light, // Toolbar
+    600 : $twitter-dark-primary, // Cards, Dialogs, Toasts, Drawer
+    700 : $twitter-dark-primary-darker,
+    800: #002366,
+    900: #161536,
+    A100: #697391,
+    A200: #546E7A,
+    A400: #37474F,
+    A700: #263238
+  )
+);
+
+$fd-mintgreen: (
+  50 : #ebf6eb,
+  100 : #ceeace,
+  200 : #aedcae,
+  300 : #8dcd8d,
+  400 : #74c374,
+  500 : #5cb85c,
+  600 : #54b154,
+  700 : #4aa84a,
+  800 : #41a041,
+  900 : #309130,
+  A100 : #d9ffd9,
+  A200 : #a6ffa6,
+  A400 : #73ff73,
+  A700 : #59ff59,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$blue-primary: mat-palette($fd-electricblue);
+$blue-accent: mat-palette($fd-mintgreen);
+$blue-warn: mat-palette($mat-deep-orange);
+$light-blue-theme: mat-light-theme(
+    $blue-primary,
+    $blue-accent,
+    $blue-warn
+);
+
+$dark-blue-theme: mat-dark-theme(
+    $blue-primary,
+    $blue-accent,
+    $blue-warn
+);

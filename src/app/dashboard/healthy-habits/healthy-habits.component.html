@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title><h3>{{ (guideLevel$ | async)?.levelName }}</h3></mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <mat-vertical-stepper linear #stepper>
+      <mat-step *ngFor="let area of (guideLevel$ | async)?.areas">
+        <form role="form">
+          <ng-template matStepLabel>{{ area.name }}</ng-template>
+          <mat-selection-list>
+            <mat-list-option *ngFor="let tip of area.tips" [value]="tip.name">
+              <h3>{{ tip.name }}</h3>
+              <p *ngIf="tip.description" mat-line>{{ tip.description }}</p>
+            </mat-list-option>
+          </mat-selection-list>
+        </form>
+      </mat-step>
+    </mat-vertical-stepper>
+  </mat-card-content>
+</mat-card>

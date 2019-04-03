@@ -1,0 +1,26 @@
+@import 'src/app-variables';
+
+.mat-card.search-results {
+  padding: 0;
+}
+
+.info-cell {
+  flex: 0 1 5%;
+
+  .mat-icon {
+    color: $primary-light;
+  }
+}
+
+.name-cell {
+  flex: 1 1 50%;
+}
+
+.mat-row:hover {
+  background: $hover-background;
+  cursor: pointer;
+}
+
+.no-data-content.no-data-table {
+  padding: 24px 0;
+}

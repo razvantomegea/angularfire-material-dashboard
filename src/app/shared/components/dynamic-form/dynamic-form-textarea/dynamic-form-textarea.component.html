@@ -1,0 +1,31 @@
+<mat-form-field
+        [appearance]="config.appearance || 'legacy'"
+        [attr.fxFlex]="config.fxFlex?.default"
+        [ngClass]="config.classes"
+>
+  <mat-label>{{config.label}}</mat-label>
+  <textarea
+          [matAutosizeMaxRows]="config.autosizeMaxRows"
+          [matAutosizeMinRows]="config.autosizeMinRows"
+          [matTextareaAutosize]="config.autosize"
+          [formControl]="control"
+          matInput
+          [maxlength]="config.maxLength"
+          [placeholder]="config.placeholder"
+          [required]="config.state?.required"
+  ></textarea>
+  <mat-hint *ngIf="config.maxLength" align="end">
+    {{control.value?.length || 0}}/{{config.maxLength}}
+  </mat-hint>
+  <ng-container *ngFor="let hint of config.hints" ngProjectAs="mat-hint">
+    <mat-hint>
+      {{hint}}
+    </mat-hint>
+  </ng-container>
+  <ng-container *ngFor="let validation of config.validations" ngProjectAs="mat-error">
+    <mat-error *ngIf="control.hasError(validation.name)">
+      <mat-icon>warning</mat-icon>
+      {{ validation.message }}
+    </mat-error>
+  </ng-container>
+</mat-form-field>

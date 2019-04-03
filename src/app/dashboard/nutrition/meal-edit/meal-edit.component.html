@@ -1,0 +1,118 @@
+<!--<mat-card class="toolbar-card" fxFlex>-->
+<!--<mat-card-header fxFlex>-->
+<!--<mat-card-title fxFlex fxLayout="row" fxLayoutAlign="start center">-->
+<!--<button (click)="onCancel()" color="primary" mat-icon-button>-->
+<!--<mat-icon [matTooltip]="'Go back'">arrow_back</mat-icon>-->
+<!--</button>-->
+<!--<span fxFlex><strong>{{ meal.timestamp }}</strong> meal edit</span>-->
+<!--<button (click)="onSave()" color="accent" mat-icon-button>-->
+<!--<mat-icon>cloud_upload</mat-icon>-->
+<!--</button>-->
+<!--<button (click)="onDelete()" color="warn" mat-icon-button>-->
+<!--<mat-icon [matTooltip]="'Delete'">delete</mat-icon>-->
+<!--</button>-->
+<!--</mat-card-title>-->
+<!--</mat-card-header>-->
+<!--</mat-card>-->
+<div fxLayout="row wrap" fxLayoutAlign="center">
+	<div class="card-section" fxFlex fxFlex.xs="100%">
+		<div fxLayout="column">
+			<div class="card-section" fxFlex fxFlex.xs="100%">
+				<app-meal-edit-details (cancel)="onCancel()"
+				                       (delete)="onDelete()"
+				                       (favoriteChange)="onFavoritesChange()"
+				                       (save)="onSave()"
+				                       (update)="onMealDetailsUpdate($event)"
+				                       [meal]="meal"></app-meal-edit-details>
+			</div>
+			<div class="card-section" fxFlex fxFlex.xs="100%">
+				<mat-card class="card--no-padding">
+					<mat-card-header>
+						<mat-card-title>Foods</mat-card-title>
+					</mat-card-header>
+					<mat-divider></mat-divider>
+					<mat-card-content>
+						<div *ngIf="isPending && !isLoaded" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+							<mat-spinner [mode]="'indeterminate'"></mat-spinner>
+						</div>
+						<ng-template *ngFor="let m of selectedMeals">
+							<app-nutrition-food-list *ngIf="m.foods.length"
+							                         (editFood)="onEditFood($event, 'selectedMeals')"
+							                         (removeFood)="onRemoveFood($event, 'selectedMeals')"
+							                         [dense]="true"
+							                         [foods]="m.foods"></app-nutrition-food-list>
+						</ng-template>
+						<app-nutrition-food-list *ngIf="selectedFoods.length"
+						                         (editFood)="onEditFood($event, 'selectedFoods')"
+						                         (removeFood)="onRemoveFood($event, 'selectedFoods')"
+						                         [dense]="true"
+						                         [foods]="selectedFoods"></app-nutrition-food-list>
+						<app-nutrition-food-list *ngIf="selectedUSDAFoods.length"
+						                         (editFood)="onEditFood($event, 'selectedUSDAFoods')"
+						                         (removeFood)="onRemoveFood($event, 'selectedUSDAFoods')"
+						                         [dense]="true"
+						                         [foods]="selectedUSDAFoods"></app-nutrition-food-list>
+						<app-nutrition-food-list *ngIf="showFoodList"
+						                         (editFood)="onEditFood($event, 'meal.foods')"
+						                         (removeFood)="onRemoveFood($event, 'meal.foods')"
+						                         [dense]="true"
+						                         [foods]="meal.foods"></app-nutrition-food-list>
+						<div *ngIf="!noData && isLoaded && !isPending">
+							<mat-divider></mat-divider>
+							<mat-list dense>
+								<mat-list-item>
+									<p fxFlex mat-line>Total</p>
+									<span fxFlex mat-line>{{ getTotalWeight() }}g</span>
+									<button (click)="onRemoveAll()" mat-icon-button>
+										<mat-icon color="accent">delete_forever</mat-icon>
+									</button>
+								</mat-list-item>
+							</mat-list>
+						</div>
+						<div *ngIf="noData && (isLoaded || !isPending)" class="no-data-content no-data-list" fxFlex fxLayout="column"
+						     fxLayoutAlign="stretch center">
+							<mat-icon>cloud_off</mat-icon>
+							<strong>No foods available</strong>
+						</div>
+					</mat-card-content>
+				</mat-card>
+			</div>
+			<div class="card-section" fxFlex fxFlex.xs="100%">
+				<app-food-select
+								(foodsChange)="onFoodsChange($event)"
+								(loadMore)="onLoadMore($event)"
+								(mealsChange)="onMealsChange($event)"
+								(search)="onSearch($event)"
+								(usdaFoodsChange)="onUSDAFoodsChange($event)"
+								[foods]="foods$ | async"
+								[foodSearch]="foodSearch$ | async"
+								[initialFoods]="selectedFoods"
+								[initialMeals]="selectedMeals"
+								[initialUSDAFoods]="selectedUSDAFoods"
+								[isPending]="isPending"
+								[meals]="meals$ | async"
+				>
+				</app-food-select>
+			</div>
+		</div>
+	</div>
+	<div class="card-section">
+		<mat-card class="card--no-padding card--nutrition">
+			<mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+				<mat-card-title fxFlex>Nutrition</mat-card-title>
+				<mat-slide-toggle
+								[checked]="showFullNutrition"
+								(toggleChange)="onToggleNutritionInfo()">
+					{{ showFullNutrition ? 'Full' : 'Essential' }}
+				</mat-slide-toggle>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<app-nutrition-details [completedNutrition]="meal.nutrition"
+				                       [fullNutrition]="showFullNutrition"
+				                       [remainingNutrition]="meal.remainingNutrition"
+				                       [usdaNutrients]="nutrients$ | async"></app-nutrition-details>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

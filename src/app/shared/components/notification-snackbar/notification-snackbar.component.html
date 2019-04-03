@@ -1,0 +1,8 @@
+<div fxLayout="row"
+     fxLayoutAlign="space-between center">
+  <button class="snackbar__icon" mat-button mat-fab>
+    <mat-icon>notifications</mat-icon>
+  </button>
+  <span class="mat-body-1" fxFlex>{{ message }}</span>
+  <button (click)="onDismiss()" mat-button>GOT IT</button>
+</div>

@@ -1,0 +1,2 @@
+describe('[Reducer] Router', () => {
+});

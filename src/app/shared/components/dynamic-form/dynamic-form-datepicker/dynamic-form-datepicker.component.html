@@ -1,0 +1,21 @@
+<mat-form-field [appearance]="config.appearance" [ngClass]="classes" [attr.fxFlex]="config.fxFlex?.default">
+	<mat-label>{{ config.label }}</mat-label>
+	<input
+					[matDatepicker]="dp"
+					[max]="config.maxDate"
+					[min]="config.minDate"
+					[formControl]="control"
+					matInput
+					[placeholder]="config.placeholder"
+					[required]="config.state?.required"
+					[value]="config.value || ''"
+	>
+	<mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+	<mat-datepicker #dp></mat-datepicker>
+	<ng-container *ngFor="let validation of config.validations" ngProjectAs="mat-error">
+		<mat-error *ngIf="control.hasError(validation.name)">
+			<mat-icon>warning</mat-icon>
+			{{ validation.message }}
+		</mat-error>
+	</ng-container>
+</mat-form-field>

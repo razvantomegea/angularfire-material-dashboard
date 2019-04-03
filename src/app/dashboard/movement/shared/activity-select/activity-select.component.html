@@ -1,0 +1,63 @@
+<mat-card class="card--no-padding">
+	<mat-card-header>
+		<mat-card-title>Select activities</mat-card-title>
+	</mat-card-header>
+	<mat-divider></mat-divider>
+	<mat-card-content>
+		<div class="search-section">
+			<app-search-box [flat]="true" [placeholder]="'Search activities...'" [value]="searchQuery"
+			                (search)="onSearch($event)"></app-search-box>
+		</div>
+		<mat-tab-group>
+			<mat-tab label="Activities">
+				<div *ngIf="isPending" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-spinner [mode]="'indeterminate'"></mat-spinner>
+				</div>
+				<mat-selection-list *ngIf="!isPending"
+				                    fxLayout="column"
+				                    (selectionChange)="onActivitiesChange($event)"
+				                    [compareWith]="compareActivities"
+				                    [(ngModel)]="activitySelectionList"
+				                    dense>
+					<mat-list-option *ngFor="let activity of activities"
+					                 color="accent"
+					                 [value]="activity"
+					>
+						{{ activity.name }}
+					</mat-list-option>
+					<button (click)="onLoadMore()" fxFlex mat-button>LOAD MORE</button>
+				</mat-selection-list>
+				<div *ngIf="noActivities && !isPending"
+				     class="no-data-content no-data-list"
+				     fxFlex
+				     fxLayout="column"
+				     fxLayoutAlign="stretch center">
+					<mat-icon>cloud_off</mat-icon>
+					<strong>No activities available</strong>
+				</div>
+			</mat-tab>
+			<mat-tab label="My sessions">
+				<div *ngIf="isPending" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-spinner [mode]="'indeterminate'"></mat-spinner>
+				</div>
+				<mat-selection-list *ngIf="!isPending"
+				                    (selectionChange)="onSessionsChange($event)"
+				                    [compareWith]="compareActivities"
+				                    [(ngModel)]="sessionSelectionList"
+				                    dense>
+					<mat-list-option
+									*ngFor="let session of (sessions$ | async)"
+									color="accent"
+									[value]="session"
+					>
+						{{ session.name }}
+					</mat-list-option>
+				</mat-selection-list>
+				<div *ngIf="noSessions && !isPending" class="no-data-content no-data-list" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-icon>cloud_off</mat-icon>
+					<strong>No sessions available</strong>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+	</mat-card-content>
+</mat-card>

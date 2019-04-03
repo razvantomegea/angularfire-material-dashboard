@@ -1,0 +1,12 @@
+<app-toolbar (logout)="onLogout()"
+             (sideNavToggle)="onSideNavToggle()"></app-toolbar>
+<app-sidenav [fixedInViewport]="sideNavFixed"
+             [mode]="sideNavMode"
+             [open]="sideNavOpen"
+             [routes]="sideNavRoutes">
+  <div class="main">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</app-sidenav>

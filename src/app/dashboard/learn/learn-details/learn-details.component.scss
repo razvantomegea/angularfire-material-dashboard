@@ -1,0 +1,72 @@
+@import 'src/app-variables.scss';
+
+.mat-card-title {
+  font-size: 22px;
+}
+
+::ng-deep .subject-content {
+  font: 400 16px/24px Roboto, 'Helvetica Neue', sans-serif ;
+  padding: 8px;
+
+  .subject-content__markdown {
+    padding: 0 56px 0 24px;
+
+    h2 {
+      margin: 48px 0;
+    }
+
+    h3 {
+      margin: 36px 0;
+    }
+
+    h4 {
+      margin: 24px 0;
+    }
+
+    blockquote {
+      border-left: 3px solid $dark-color-light;
+      font-size: 18px;
+      font-style: italic;
+      line-height: 1.6;
+      margin: 36px 0 36px -24px;
+      padding-left: 20px;
+    }
+  }
+
+  .references {
+    padding: 0 24px;
+
+    h2 {
+      margin: 12px 0;
+    }
+  }
+
+  .reading-time, .learning-objectives {
+    font-size: 14px;
+    margin: 12px 0 0 0;
+
+    .mat-icon {
+      margin: 0 12px 0 0;
+    }
+  }
+
+  .reading-time {
+    background-color: $primary-lightest;
+    color: $primary-light;
+    padding: 12px 24px;
+  }
+
+  .learning-objectives {
+    background-color: $light-background-section;
+    color: $dark-color-light;
+    padding: 12px 24px 0 24px;
+  }
+
+  @media screen and (max-width: 599px) {
+    padding: 0;
+
+    .subject-content__markdown, .references {
+      padding: 0 8px;
+    }
+  }
+}

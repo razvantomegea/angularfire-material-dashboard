@@ -1,0 +1,36 @@
+ 
+// Import the theme’s variables. If you’re using a color scheme
+// other than “light”, switch the path to the alternative scheme,
+// for example '~nativescript-theme-core/scss/dark'.
+@import '~nativescript-theme-core/scss/light';
+
+// Place any custom variables here. For example:
+// $page-content-placeholder-font-size: 20;
+@import 'app-theme';
+
+$primary: map-get($light-blue-theme, primary);
+$accent: map-get($light-blue-theme, accent);
+$warn: map-get($light-blue-theme, warn);
+
+$primary-darker-contrast: mat-contrast($primary, 900);
+$primary-dark-contrast: mat-contrast($primary, 800);
+$primary-electric: mat-color($primary, 500);
+$primary-light: mat-color($primary, 300);
+$primary-light-contrast: mat-contrast($primary, 300);
+$primary-light-text: mat-color($primary, 100);
+$primary-lightest: mat-color($primary, 50);
+$secondary: mat-color($accent, 500);
+$secondary-light: mat-color($accent, A700);
+$secondary-lightest: mat-color($accent, 50);
+$danger: mat-color($warn, 500);
+$dark-color-light: mat-contrast($primary, A100);
+$caption: mat-contrast($primary, A200);
+$dark-color: mat-contrast($primary, A400);
+$dark-background: mat-contrast($primary, 400);
+$dark-toolbar: mat-contrast($primary, 500);
+$dark-content: mat-contrast($primary, 600);
+$white-text: mat-color($primary, A200);
+$light-gray: silver;
+$dark-gray: rgba(150, 150, 150, 1);
+$light-background-section: rgba(1, 1, 1, .1);
+$hover-background: rgba(0, 0, 0, .04);

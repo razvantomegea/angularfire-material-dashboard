@@ -1,0 +1,11 @@
+.mat-divider {
+  margin: 24px -24px;
+
+  &.mat-title-divider {
+    margin: 0 -24px 24px -24px;
+  }
+
+  &.mat-actions-divider {
+    margin: 0 -24px;
+  }
+}

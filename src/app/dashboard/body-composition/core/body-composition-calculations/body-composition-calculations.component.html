@@ -1,0 +1,37 @@
+<mat-list>
+	<mat-list-item>
+		<mat-icon mat-list-icon>offline_bolt</mat-icon>
+		<p fxFlex mat-line>Resting metabolic rate (RHR)</p>
+		<span class="mat-list-item-info" fxFlex fxFlex.gt-xs="100%">
+            {{ getRestingMetabolicRate() }}
+          </span>
+	</mat-list-item>
+	<mat-list-item>
+		<fa-icon [icon]="['fas', 'heartbeat']" mat-list-icon></fa-icon>
+		<p fxFlex mat-line>Maximum heart rate (VO2 Max)</p>
+		<span class="mat-list-item-info" fxFlex fxFlex.gt-xs="100%">
+            {{ getMaximumHeartRate() }}
+          </span>
+	</mat-list-item>
+	<mat-list-item>
+		<mat-icon mat-list-icon>tonality</mat-icon>
+		<p fxFlex mat-line>Training heart rate</p>
+		<span class="mat-list-item-info" fxFlex fxFlex.gt-xs="100%">
+            {{ getTrainingHeartRate() }}
+          </span>
+	</mat-list-item>
+	<mat-list-item>
+		<fa-icon [icon]="['fas', 'couch']" mat-list-icon></fa-icon>
+		<p fxFlex mat-line>Body fat percentage</p>
+		<span class="mat-list-item-info" fxFlex fxFlex.gt-xs="100%">
+            {{ getBodyFatPercentage() }}
+          </span>
+	</mat-list-item>
+	<mat-list-item>
+		<mat-icon mat-list-icon>fitness_center</mat-icon>
+		<p fxFlex mat-line>Lean muscle mass</p>
+		<span class="mat-list-item-info" fxFlex fxFlex.gt-xs="100%">
+            {{ getLeanMuscleMass() }}
+          </span>
+	</mat-list-item>
+</mat-list>

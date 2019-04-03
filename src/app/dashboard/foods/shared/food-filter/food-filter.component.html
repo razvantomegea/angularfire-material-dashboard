@@ -1,0 +1,45 @@
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>Filter foods</mat-card-title>
+	</mat-card-header>
+	<mat-divider></mat-divider>
+	<mat-card-content fxLayout="column">
+		<mat-form-field>
+			<mat-select (selectionChange)="onSelectFoodGroup()" [(ngModel)]="selectedFoodGroup" placeholder="Food group">
+				<mat-option *ngFor="let group of foodGroups" [value]="group">{{ group }}</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-select (selectionChange)="onSelectNutrient()" [(ngModel)]="selectedNutrient" placeholder="Nutrient">
+				<mat-option *ngFor="let nutrient of nutrients" [value]="nutrient.id">{{ nutrient.name }}</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<!--<mat-form-field>-->
+			<!--<mat-chip-list #nutrientChipList>-->
+				<!--<mat-chip-->
+								<!--*ngFor="let nutrient of selectedNutrients"-->
+								<!--[selectable]="true"-->
+								<!--[removable]="true"-->
+								<!--(removed)="onRemoveNutrient(nutrient)">-->
+					<!--{{nutrient.name}}-->
+					<!--<mat-icon matChipRemove>cancel</mat-icon>-->
+				<!--</mat-chip>-->
+				<!--<input-->
+								<!--#nutrientInput-->
+								<!--(matChipInputTokenEnd)="onAddNutrient($event)"-->
+								<!--[formControl]="nutrientCtrl"-->
+								<!--[matAutocomplete]="nutrientAuto"-->
+								<!--[matChipInputAddOnBlur]="true"-->
+								<!--[matChipInputFor]="nutrientChipList"-->
+								<!--[matChipInputSeparatorKeyCodes]="separatorKeysCodes"-->
+								<!--placeholder="Nutrient content"-->
+				<!--&gt;-->
+			<!--</mat-chip-list>-->
+			<!--<mat-autocomplete #nutrientAuto="matAutocomplete" (optionSelected)="onSelectedNutrient($event)">-->
+				<!--<mat-option *ngFor="let nutrient of queriedNutrients | async" [value]="nutrient.id">-->
+					<!--{{nutrient.name}}-->
+				<!--</mat-option>-->
+			<!--</mat-autocomplete>-->
+		<!--</mat-form-field>-->
+	</mat-card-content>
+</mat-card>

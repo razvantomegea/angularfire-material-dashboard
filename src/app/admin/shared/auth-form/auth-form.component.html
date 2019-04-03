@@ -1,0 +1,95 @@
+<mat-card class="auth">
+	<mat-card-header class="auth__header"
+	                 fxLayout="column"
+	                 fxLayoutAlign="center space-evenly">
+		<mat-card-title>
+			<h3>{{ title }}</h3>
+		</mat-card-title>
+		<mat-card-subtitle fxLayout="row"
+		                   fxLayoutAlign="space-evenly center">
+			<ng-container *ngIf="!isPasswordReset() && !isPhoneVerify() && !isPhoneConfirmCode()">
+				<button (click)="onSocialAuth('facebook')"
+				        mat-icon-button
+				        type="button">
+					<fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+				</button>
+				<button (click)="onSocialAuth('google')"
+				        mat-icon-button
+				        type="button">
+					<fa-icon [icon]="['fab', 'google']"></fa-icon>
+				</button>
+				<button (click)="onSocialAuth('twitter')"
+				        mat-icon-button
+				        type="button">
+					<fa-icon [icon]="['fab', 'twitter']"></fa-icon>
+				</button>
+				<button (click)="onSocialAuth('github')"
+				        mat-icon-button
+				        type="button">
+					<fa-icon [icon]="['fab', 'github']"></fa-icon>
+				</button>
+			</ng-container>
+		</mat-card-subtitle>
+	</mat-card-header>
+	<app-dynamic-form
+					(created)="onFormCreated($event)"
+					[classes]="formClasses"
+					[flexLayout]="formLayout"
+					[configs]="formConfigs">
+		<mat-card-actions fxLayout="column"
+		                  class="auth__actions">
+			<button
+							(click)="onSubmit()"
+							class="auth__submit"
+							color="accent"
+							fxFlex
+							mat-raised-button
+							type="submit"
+			>
+				{{ submitButtonText }}
+			</button>
+			<button
+							(click)="onReAuth('login')"
+							*ngIf="isPasswordReset()"
+							class="auth__submit"
+							color="accent"
+							fxFlex
+							mat-button
+							type="button"
+			>
+				CANCEL
+			</button>
+		</mat-card-actions>
+	</app-dynamic-form>
+	<div *ngIf="!isPasswordReset()" fxLayout="column" fxLayoutAlign="center center" fxFlex>
+        <span *ngIf="isRegistration()"
+              class="mat-body-1">Already have an account?
+          <a class="mat-body-2"
+             (click)="onReAuth('login')">Log in</a>
+        </span>
+		<span *ngIf="isLogin()"
+		      class="mat-body-1">Don't have an account?
+          <a class="mat-body-2"
+             (click)="onReAuth('registration')">Sign up</a>
+        </span>
+		<span *ngIf="isLogin()"
+		      class="mat-body-1">Forgot password?
+          <a class="mat-body-2"
+             (click)="onReAuth('password-reset')">Reset password</a>
+        </span>
+		<span *ngIf="isPhoneConfirmCode()"
+		      class="mat-body-1">Didn't receive SMS?
+          <a class="mat-body-2"
+             (click)="onResendCode()">Resend confirmation code</a>
+        </span>
+		<!-- <div *ngIf="isRegistration()"
+				 class="terms-container mat-caption"
+				 fxLayout="column">
+			By continuing, you are indicating that you accept our
+			<span>
+				<a class="mat-body-2">Terms of Service</a> and
+				<a class="mat-body-2">Privacy Policy.</a>
+			</span>
+		</div> -->
+	</div>
+</mat-card>

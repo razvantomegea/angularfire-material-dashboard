@@ -1,0 +1,70 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap.gt-xs="12px">
+	<div class="card-section" fxFlex fxFlex.xs="100%">
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Meals</mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<div *ngIf="isPending" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-spinner [mode]="'indeterminate'"></mat-spinner>
+				</div>
+				<app-nutrition-food-list *ngIf="!isPending && diet?.meals?.length"
+				                         (editFood)="onEditMeal($event)"
+				                         (removeFood)="onDeleteMeal($event)"
+				                         [dense]="true"
+				                         [foods]="diet?.meals"></app-nutrition-food-list>
+				<div *ngIf="noData && !isPending" class="no-data-content no-data-list" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-icon>cloud_off</mat-icon>
+					<strong>No meals available</strong>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div class="card-section" fxFlex fxFlex.xs="100%">
+		<mat-card class="card--no-padding card--nutrition">
+			<mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+				<mat-card-title fxFlex>Nutrition</mat-card-title>
+				<mat-slide-toggle
+								[checked]="showFullNutrition"
+								(toggleChange)="onToggleNutritionInfo()">
+					{{ showFullNutrition ? 'Full' : 'Essential' }}
+				</mat-slide-toggle>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<div *ngIf="isPending" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-spinner [mode]="'indeterminate'"></mat-spinner>
+				</div>
+				<app-nutrition-details *ngIf="!isPending"
+				                       [completedNutrition]="diet?.completedNutrition"
+				                       [fullNutrition]="showFullNutrition"
+				                       [remainingNutrition]="diet?.remainingNutrition"
+				                       [usdaNutrients]="nutrients$ | async"></app-nutrition-details>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div class="card-section" fxFlex fxFlex.xs="100%">
+		<mat-card>
+			<mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+				<mat-card-title fxFlex>Trends</mat-card-title>
+				<button (click)="onTrendsFilter()" [matTooltip]="'Filter trends'" mat-icon-button color="accent">
+					<mat-icon>filter_list</mat-icon>
+				</button>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<canvas baseChart
+				        [datasets]="chartData"
+				        [labels]="chartLabels"
+				        [options]="chartOptions"
+				        [colors]="chartColors"
+				        [legend]="chartLegend"
+				        [chartType]="chartType"></canvas>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>
+<button (click)="onAddMeal()" class="fab fab--bottom-right" color="accent" mat-button mat-fab>
+	<mat-icon [matTooltip]="'Add meal'">add</mat-icon>
+</button>

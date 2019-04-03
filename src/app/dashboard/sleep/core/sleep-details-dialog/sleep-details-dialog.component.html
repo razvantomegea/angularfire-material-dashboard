@@ -1,0 +1,29 @@
+<h1 matDialogTitle>Edit sleep</h1>
+<mat-divider class="mat-title-divider"></mat-divider>
+<app-dynamic-form-dialog
+				(created)="onFormCreated($event)"
+				(submitted)="onSubmit($event, true)"
+				(valueChange)="onFormValueChanges($event)"
+				[classes]="formClasses"
+				[configs]="formConfigs"
+				[flexLayout]="{default: 'column'}"
+				[initialData]="initialFormData"
+>
+	<mat-divider class="mat-actions-divider"></mat-divider>
+	<mat-dialog-actions align="start">
+		<button
+						mat-button
+						matDialogClose
+						type="button"
+		>CANCEL
+		</button>
+		<span fxFlex></span>
+		<button
+						(click)="onSubmit(null, false)"
+						color="accent"
+						mat-button
+		>
+			SAVE
+		</button>
+	</mat-dialog-actions>
+</app-dynamic-form-dialog>

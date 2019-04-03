@@ -1,0 +1,45 @@
+@import 'src/app-variables';
+
+::ng-deep .snackbar__icon {
+  background-color: #ffffff !important;
+  left: -6px;
+  margin-right: 8px;
+  position: relative;
+  top: -40px;
+}
+
+::ng-deep .snackbar--error {
+  background-color: $danger !important;
+
+  .mat-button {
+    color: $primary-electric !important;
+  }
+
+  .snackbar__icon .mat-icon {
+    color: $danger !important;
+  }
+}
+
+::ng-deep .snackbar--info {
+  background-color: $primary-light !important;
+
+  .mat-button {
+    color: $secondary-light !important;
+  }
+
+  .snackbar__icon .mat-icon {
+    color: $primary-light !important;
+  }
+}
+
+::ng-deep .snackbar--success {
+  background-color: $secondary !important;
+
+  .mat-button {
+    color: $primary-electric !important;
+  }
+
+  .snackbar__icon .mat-icon {
+    color: $secondary !important;
+  }
+}

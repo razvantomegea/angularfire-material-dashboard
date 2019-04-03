@@ -1,0 +1,53 @@
+<mat-card>
+	<mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+		<mat-card-title fxFlex>Details</mat-card-title>
+		<button mat-icon-button color="accent" (click)="onMealDetailsUpdate()">
+			<mat-icon>create</mat-icon>
+		</button>
+	</mat-card-header>
+	<mat-divider></mat-divider>
+	<mat-card-content>
+		<mat-list>
+			<mat-list-item>
+				<mat-icon mat-list-icon>schedule</mat-icon>
+				<p mat-line fxFlex>Time</p>
+				<span class="mat-list-item-info"
+				      fxFlex
+				      fxFlex.gt-xs="100%"
+				      [matTooltip]="isOverflown ? meal.timestamp : ''"
+				      (mouseover)="onMouseEnter($event)">
+					{{ meal.timestamp }}
+          </span>
+			</mat-list-item>
+			<mat-list-item>
+				<mat-icon mat-list-icon>book</mat-icon>
+				<p mat-line fxFlex>Notes</p>
+				<span class="mat-list-item-info"
+				      fxFlex
+				      fxFlex.gt-xs="100%"
+				      [matTooltip]="isOverflown ? meal.notes : ''"
+				      (mouseover)="onMouseEnter($event)">
+            {{ meal.notes || 'No notes' }}
+          </span>
+			</mat-list-item>
+			<mat-list-item>
+				<mat-icon mat-list-icon>favorite</mat-icon>
+				<p fxFlex mat-line>Favorite</p>
+				<mat-slide-toggle
+								[class.mat-slide-toggle-content--checked]="!!meal.name"
+								[checked]="!!meal.name"
+								[disabled]="!meal.foods.length || !meal.id"
+								(toggleChange)="onFavoritesChange()">
+					{{ meal.name || 'NO' }}
+				</mat-slide-toggle>
+			</mat-list-item>
+		</mat-list>
+	</mat-card-content>
+	<mat-divider></mat-divider>
+	<mat-card-actions fxLayout="row" fxLayoutAlign="start center">
+		<button (click)="onDelete()" [disabled]="!meal.id" color="warn" mat-button>DELETE</button>
+		<span fxFlex></span>
+		<button (click)="onCancel()" mat-button>CANCEL</button>
+		<button (click)="onSave()" color="accent" mat-button>SAVE</button>
+	</mat-card-actions>
+</mat-card>

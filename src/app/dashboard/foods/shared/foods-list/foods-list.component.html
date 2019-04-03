@@ -1,0 +1,39 @@
+<mat-card class="search-results">
+	<mat-card-content *ngIf="!isPending && !noData">
+		<mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortDisableClear matSortDirection="asc">
+			<!-- Name Column -->
+			<ng-container matColumnDef="name">
+				<mat-header-cell class="name-cell" *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+				<mat-cell class="name-cell" *matCellDef="let row"> {{row.name}}</mat-cell>
+			</ng-container>
+			<!-- Manufacturer Column -->
+			<ng-container *ngIf="hasManufacturer" matColumnDef="manu">
+				<mat-header-cell *matHeaderCellDef mat-sort-header>Manufacturer</mat-header-cell>
+				<mat-cell *matCellDef="let row"> {{row.manu}}</mat-cell>
+			</ng-container>
+			<!-- Group Column -->
+			<ng-container *ngIf="hasGroup" matColumnDef="group">
+				<mat-header-cell *matHeaderCellDef mat-sort-header>Group</mat-header-cell>
+				<mat-cell *matCellDef="let row"> {{row.group}}</mat-cell>
+			</ng-container>
+			<!-- Nutrient Column -->
+			<ng-container *ngIf="hasNutrients" matColumnDef="nutrient">
+				<mat-header-cell *matHeaderCellDef mat-sort-header>{{ selectedNutrient }}</mat-header-cell>
+				<mat-cell *matCellDef="let row"> {{ getNutrientValue(row) }}</mat-cell>
+			</ng-container>
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onFoodItemClick(row)">
+			</mat-row>
+		</mat-table>
+		<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+	</mat-card-content>
+	<mat-card-content *ngIf="isPending || noData">
+		<div *ngIf="isPending" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+			<mat-spinner [mode]="'indeterminate'"></mat-spinner>
+		</div>
+		<div *ngIf="noData && !isPending" class="no-data-content no-data-table" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+			<mat-icon>cloud_off</mat-icon>
+			<strong>No foods available</strong>
+		</div>
+	</mat-card-content>
+</mat-card>

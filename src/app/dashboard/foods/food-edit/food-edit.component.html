@@ -1,0 +1,61 @@
+<div fxLayout="column" fxLayoutAlign="start center">
+	<mat-card class="card--no-padding">
+		<form [formGroup]="foodDescriptionForm" (ngSubmit)="onSubmit()">
+			<mat-card-header fxLayout="row" fxLayoutAlign="start center">
+				<mat-card-title fxLayout="row" fxLayoutAlign="center center">
+					<button (click)="onCancel()" mat-icon-button type="button">
+						<mat-icon [matTooltip]="'Go back'">arrow_back</mat-icon>
+					</button>
+					<h2>{{ foodId ? 'Edit' : 'Create' }} food</h2>
+				</mat-card-title>
+				<span fxFlex></span>
+				<button color="accent" mat-icon-button type="submit">
+					<mat-icon [matTooltip]="'Save'">cloud_upload</mat-icon>
+				</button>
+				<button (click)="onDelete()" [disabled]="!foodId" color="warn" mat-icon-button type="button">
+					<mat-icon [matTooltip]="'Delete'">delete</mat-icon>
+				</button>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-vertical-stepper class="food-edit" linear #stepper>
+				<mat-step [stepControl]="foodDescriptionForm">
+					<ng-template matStepLabel>Food description</ng-template>
+					<mat-card-content fxLayout="column" class="food-edit-description">
+						<app-dynamic-form
+										(created)="onFormCreated($event)"
+										[configs]="formConfigs"
+										[flexLayout]="{default: 'row'}"
+										[flexLayoutGap]="{default: '10px'}"
+										[flexLayoutAlign]="{default: 'space-between center'}"
+										[initialData]="initialFormData"
+						></app-dynamic-form>
+					</mat-card-content>
+				</mat-step>
+				<mat-step [stepControl]="foodNutritionForm">
+					<ng-template matStepLabel>Food nutrition</ng-template>
+					<form *ngIf="foodNutritionForm" [formGroup]="foodNutritionForm">
+						<mat-card-content *ngIf="foodNutritionForm">
+							<mat-accordion [multi]="true" fxLayout="column">
+								<mat-expansion-panel class="mat-elevation-z0" *ngFor="let group of nutrientGroups; let isLast = last">
+									<mat-expansion-panel-header>
+										<mat-panel-title>
+											{{ group.name }}
+										</mat-panel-title>
+									</mat-expansion-panel-header>
+									<div fxLayout="row wrap" fxLayoutGap="24px" fxFlex>
+										<mat-form-field *ngFor="let nutrient of group.nutrients" appearance="outline">
+											<mat-label>{{ nutrient.name }}</mat-label>
+											<input [formControlName]="nutrient.name"
+											       matInput
+											       type="number">
+										</mat-form-field>
+									</div>
+								</mat-expansion-panel>
+							</mat-accordion>
+						</mat-card-content>
+					</form>
+				</mat-step>
+			</mat-vertical-stepper>
+		</form>
+	</mat-card>
+</div>

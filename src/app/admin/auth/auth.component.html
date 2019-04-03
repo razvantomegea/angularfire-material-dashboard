@@ -1,0 +1,15 @@
+<div fxFlexFill
+     fxLayout="row"
+     fxLayoutAlign="center center">
+  <app-auth-form [credentials]="authCredentials"
+                 [disabled]="authFormDisabled"
+                 [type]="authMethod"
+                 (formError)="onFormError($event)"
+                 (reAuth)="onReAuth($event)"
+                 (socialAuth)="onSocialAuth($event)"
+                 (submit)="onSubmit($event)"></app-auth-form>
+</div>
+<particles [style]="particleStyle"
+           [width]="particleContainerWidth"
+           [height]="particleContainerHeight"
+           [params]="particleConfig"></particles>

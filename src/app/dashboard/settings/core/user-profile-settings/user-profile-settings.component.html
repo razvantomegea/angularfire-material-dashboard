@@ -1,0 +1,100 @@
+<mat-card>
+	<mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+		<mat-card-title fxFlex>Profile</mat-card-title>
+		<button mat-icon-button color="accent" (click)="onProfileUpdate()">
+			<mat-icon [matTooltip]="'Edit'">create</mat-icon>
+		</button>
+	</mat-card-header>
+	<mat-divider></mat-divider>
+	<mat-card-content>
+		<mat-list>
+			<h3 mat-subheader>Avatar</h3>
+			<mat-list-item class="mat-list-item-avatar">
+				<mat-icon mat-list-icon>photo_camera</mat-icon>
+				<p mat-line fxFlex>Photo</p>
+				<span class="mat-list-item-info" fxFlex>
+            <img *ngIf="userInfo?.photoURL; else avatarIcon"
+                 [src]="userInfo?.photoURL"
+                 alt="User avatar"
+                 mat-list-avatar />
+          <ng-template #avatarIcon>
+            <mat-icon class="mat-list-icon-avatar" mat-list-icon>
+              account_circle
+            </mat-icon>
+          </ng-template>
+          </span>
+			</mat-list-item>
+			<mat-list-item>
+				<mat-icon mat-list-icon>face</mat-icon>
+				<p mat-line fxFlex>Username</p>
+				<span class="mat-list-item-info"
+				      fxFlex
+				      fxFlex.gt-xs="100%"
+				      [matTooltip]="isOverflown ? userInfo?.displayName : ''"
+				      (mouseover)="onMouseEnter($event)">
+            {{ userInfo?.displayName }}
+          </span>
+			</mat-list-item>
+			<mat-list-item>
+				<mat-icon mat-list-icon>mail</mat-icon>
+				<p mat-line fxFlex>Email</p>
+				<span class="mat-list-item-info"
+				      fxFlex
+				      fxFlex.gt-xs="100%"
+				      [matTooltip]="isOverflown ? userInfo?.email : ''"
+				      (mouseover)="onMouseEnter($event)">
+            {{ userInfo?.email }}
+          </span>
+			</mat-list-item>
+			<mat-divider></mat-divider>
+			<h3 mat-subheader>Bio</h3>
+			<mat-list-item>
+				<mat-icon mat-list-icon>book</mat-icon>
+				<p mat-line fxFlex>About me</p>
+				<span class="mat-list-item-info"
+				      fxFlex
+				      fxFlex.gt-xs="100%"
+				      [matTooltip]="isOverflown ? userInfo?.bio?.summary : ''"
+				      (mouseover)="onMouseEnter($event)">
+            {{ userInfo?.bio?.summary }}
+          </span>
+			</mat-list-item>
+			<mat-list-item>
+				<mat-icon mat-list-icon>event</mat-icon>
+				<p mat-line fxFlex>Date of birth</p>
+				<span class="mat-list-item-info" fxFlex fxFlex.gt-xs="100%">
+            {{ userInfo?.bio?.dateOfBirth }}
+          </span>
+			</mat-list-item>
+			<mat-list-item>
+				<fa-icon [icon]="['fas', 'transgender']" mat-list-icon></fa-icon>
+				<p fxFlex mat-line>Gender</p>
+				<span class="mat-list-item-info" fxFlex fxFlex.gt-xs="100%">
+            {{ userInfo?.bio?.getGender() }}
+          </span>
+			</mat-list-item>
+			<mat-list-item>
+				<mat-icon mat-list-icon>change_history</mat-icon>
+				<p fxFlex mat-line>Level</p>
+				<span class="mat-list-item-info"
+				      fxFlex
+				      fxFlex.gt-xs="100%"
+				      [matTooltip]="isOverflown ? userInfo?.bio?.level.levelName : ''"
+				      (mouseover)="onMouseEnter($event)">
+            {{ userInfo?.bio?.level.levelName }}
+          </span>
+			</mat-list-item>
+			<mat-list-item>
+				<mat-icon mat-list-icon>gps_fixed</mat-icon>
+				<p fxFlex mat-line>Goal</p>
+				<span class="mat-list-item-info"
+				      fxFlex
+				      fxFlex.gt-xs="100%"
+				      [matTooltip]="isOverflown ? userInfo?.bio?.goal : ''"
+				      (mouseover)="onMouseEnter($event)">
+            {{ userInfo?.bio?.goal }}
+          </span>
+			</mat-list-item>
+		</mat-list>
+	</mat-card-content>
+</mat-card>

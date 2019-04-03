@@ -1,0 +1,49 @@
+<div fxLayout="column" fxLayoutAlign="start center">
+	<mat-card class="card--no-padding" *ngIf="food" fxFlex>
+		<mat-card-header fxLayout="row" fxLayoutAlign="start center">
+			<div fxLayout="row" fxLayoutAlign="start center" fxFlex="100%">
+				<button mat-icon-button (click)="onGoBack()">
+					<mat-icon [matTooltip]="'Go back'">arrow_back</mat-icon>
+				</button>
+				<div>
+					<mat-card-title>
+						<h2>{{ food?.desc?.name }}{{ food?.desc?.sn ? ' (' + food?.desc?.sn + ')' : '' }}</h2>
+					</mat-card-title>
+					<mat-card-subtitle *ngIf="food?.desc?.fg">{{ food?.desc?.fg }}</mat-card-subtitle>
+				</div>
+			</div>
+			<span fxFlex></span>
+			<button *ngIf="food?.id" mat-icon-button color="accent" (click)="onEdit()">
+				<mat-icon [matTooltip]="'Edit'">create</mat-icon>
+			</button>
+			<button *ngIf="food?.id" (click)="onDelete()" mat-icon-button color="warn">
+				<mat-icon [matTooltip]="'Delete'">delete</mat-icon>
+			</button>
+		</mat-card-header>
+		<mat-divider></mat-divider>
+		<mat-card-content>
+			<mat-list dense>
+				<mat-list-item *ngIf="food?.desc?.manu">
+					<h4 fxFlex mat-line>Manufacturer</h4>
+					<p class="mat-list-item-info" fxFlex fxFlex.gt-xs="100%">{{ food?.desc?.manu }}</p>
+				</mat-list-item>
+			</mat-list>
+			<mat-list *ngIf="food?.ing" dense>
+				<h3 mat-subheader>Ingredients</h3>
+				<mat-list-item *ngIf="!isArray(food?.ing)">{{ food?.ing.desc }}</mat-list-item>
+				<ng-container *ngIf="isArray(food?.ing)">
+					<mat-list-item *ngFor="let ingredient of food?.ing">{{ ingredient.desc }}</mat-list-item>
+				</ng-container>
+			</mat-list>
+			<mat-divider *ngIf="food?.ing"></mat-divider>
+			<mat-list *ngFor="let group of nutrientGroups; let isLast = last" dense>
+				<h3 mat-subheader>{{ group }}</h3>
+				<mat-list-item *ngFor="let nutrient of getNutrientsByGroup(group)">
+					<h4 fxFlex mat-line>{{ nutrient.name }}</h4>
+					<span class="mat-list-item-info" fxFlex fxFlex.gt-xs="100%">{{ nutrient.value }} {{ nutrient.unit }}</span>
+				</mat-list-item>
+				<mat-divider *ngIf="!isLast"></mat-divider>
+			</mat-list>
+		</mat-card-content>
+	</mat-card>
+</div>

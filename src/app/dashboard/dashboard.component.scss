@@ -1,0 +1,116 @@
+@import 'src/app-variables';
+
+::ng-deep .main {
+  color: $dark-color;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  .container {
+    height: 90%;
+    padding: 12px;
+  }
+}
+
+::ng-deep .dark-blue-theme {
+  .mat-card {
+    background-color: $dark-content;
+  }
+
+  .main, .main .container, .mat-drawer-content {
+    background-color: $dark-background;
+    color: $white-text;
+
+    .mat-list-icon, .mat-line {
+      color: $dark-color-light;
+    }
+  }
+}
+
+::ng-deep .light-blue-theme .main {
+  .mat-list-icon, .mat-line {
+    color: $caption;
+  }
+}
+
+::ng-deep .mat-card-header .mat-icon-button {
+  height: 30px;
+  line-height: 30px;
+  width: 30px;
+}
+
+::ng-deep .card-grid-section {
+  @media screen and (min-width: 600px) {
+    .mat-card {
+      margin: 12px;
+    }
+  }
+
+  @media screen and (max-width: 599px) {
+    .mat-card {
+      margin-top: 12px;
+    }
+  }
+}
+
+::ng-deep .card-section {
+  @media screen and (max-width: 599px) {
+    & + & {
+      margin-top: 12px;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    margin: 12px;
+    min-width: 400px;
+    max-width: 600px;
+  }
+
+  .mat-card-actions .mat-button:first-child, .mat-card-actions .mat-raised-button:first-child {
+    margin-top: 8px;
+  }
+}
+
+::ng-deep .card-section .card-section {
+  @media screen and (max-width: 599px) {
+    & + & {
+      margin-top: 6px;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    margin: 0 6px 12px 6px;
+  }
+}
+
+::ng-deep .mat-dialog-container {
+  overflow: hidden !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  .mat-dialog-title {
+    padding: 0 24px !important;
+  }
+
+  .mat-dialog-content:not(.dialog-questionnaire) {
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 24px !important;
+    width: 100% !important;
+  }
+
+  .mat-dialog-actions {
+    padding: 12px 24px !important;
+  }
+
+  .mat-horizontal-stepper-header-container {
+    padding: 0 24px !important;
+  }
+}
+
+::ng-deep .credit {
+  color: $caption;
+  font-size: 12px;
+  font-style: italic;
+}

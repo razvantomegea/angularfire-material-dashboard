@@ -1,0 +1,80 @@
+<mat-card class="card--no-padding">
+	<mat-card-header>
+		<mat-card-title>Select foods</mat-card-title>
+	</mat-card-header>
+	<mat-divider></mat-divider>
+	<mat-card-content>
+		<div class="search-section">
+			<app-search-box [flat]="true" [placeholder]="'Search foods...'" [value]="searchQuery" (search)="onSearch($event)"></app-search-box>
+		</div>
+		<mat-tab-group>
+			<mat-tab label="USDA Foods">
+				<div *ngIf="isPending" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-spinner [mode]="'indeterminate'"></mat-spinner>
+				</div>
+				<mat-selection-list *ngIf="!isPending"
+				                    fxLayout="column"
+				                    (selectionChange)="onUSDAFoodsChange($event)"
+				                    [compareWith]="compareFoods"
+				                    [(ngModel)]="usdaSelectionList"
+				                    dense>
+					<mat-list-option
+									*ngFor="let food of foodSearch"
+									color="accent"
+									[value]="food"
+					>
+						{{ food.name }}
+					</mat-list-option>
+					<button (click)="onLoadMore()" fxFlex mat-button>LOAD MORE</button>
+				</mat-selection-list>
+				<div *ngIf="noUSDAFoods && !isPending" class="no-data-content no-data-list" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-icon>cloud_off</mat-icon>
+					<strong>No foods available</strong>
+				</div>
+			</mat-tab>
+			<mat-tab label="My foods">
+				<div *ngIf="isPending" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-spinner [mode]="'indeterminate'"></mat-spinner>
+				</div>
+				<mat-selection-list *ngIf="!isPending"
+				                    (selectionChange)="onFoodsChange($event)"
+				                    [compareWith]="compareFoods"
+				                    [(ngModel)]="foodSelectionList"
+				                    dense>
+					<mat-list-option *ngFor="let food of foods"
+					                 color="accent"
+					                 [value]="food"
+					>
+						{{ food.desc.name }}
+					</mat-list-option>
+				</mat-selection-list>
+				<div *ngIf="noFoods && !isPending" class="no-data-content no-data-list" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-icon>cloud_off</mat-icon>
+					<strong>No foods available</strong>
+				</div>
+			</mat-tab>
+			<mat-tab label="My meals">
+				<div *ngIf="isPending" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-spinner [mode]="'indeterminate'"></mat-spinner>
+				</div>
+				<mat-selection-list *ngIf="!isPending"
+				                    (selectionChange)="onMealsChange($event)"
+				                    [compareWith]="compareFoods"
+				                    [(ngModel)]="mealSelectionList"
+				                    dense>
+					<mat-list-option
+									*ngFor="let meal of (meals$ | async)"
+									color="accent"
+									[value]="meal"
+					>
+						{{ meal.name }}
+					</mat-list-option>
+				</mat-selection-list>
+				<div *ngIf="noMeals && !isPending" class="no-data-content no-data-list" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-icon>cloud_off</mat-icon>
+					<strong>No meals available</strong>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+	</mat-card-content>
+</mat-card>

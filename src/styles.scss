@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Import common styles
+@import 'app-common';
+
+// https://www.materialpalette.com/colors
+@import 'app-theme';
+
+@include mat-core();
+
+@mixin theme {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
+
+.light-blue-theme {
+  @include theme;
+  @include angular-material-theme($light-blue-theme);
+}
+
+.dark-blue-theme {
+  @include theme;
+  @include angular-material-theme($dark-blue-theme);
+}
+
+html, body {
+  font-family: Roboto, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}

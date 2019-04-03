@@ -1,0 +1,37 @@
+<mat-card>
+	<mat-card-header>
+		<mat-card-title>{{ subject?.title }}</mat-card-title>
+	</mat-card-header>
+	<mat-divider></mat-divider>
+	<br>
+	<mat-card-content class="mat-typography subject-content no-select" fxLayout="column">
+		<div class="reading-time" fxLayout="row" fxLayoutAlign="start center">
+			<mat-icon class="mat-18">access_time</mat-icon>
+			<span><strong>Estimated time</strong>: {{ minutesToRead }} minutes</span>
+		</div>
+		<div class="learning-objectives" fxLayout="column" fxLayoutAlign="center start">
+			<div fxLayout="row" fxLayoutAlign="start center">
+				<mat-icon class="mat-18">school</mat-icon>
+				<span><strong>Learning objectives</strong></span>
+			</div>
+			<ul>
+				<li *ngFor="let o of subject?.objectives">
+					{{ o }}
+				</li>
+			</ul>
+		</div>
+		<div class="subject-content__markdown">
+			<markdown [src]="mdSrc" (load)="onMdLoad($event)"></markdown>
+		</div>
+		<div class="references">
+			<h2>References:</h2>
+			<ol>
+				<li *ngFor="let reference of subject?.references">
+					<a [href]="reference.url" target="blank">
+						<i>{{ reference.description }}</i>
+					</a>
+				</li>
+			</ol>
+		</div>
+	</mat-card-content>
+</mat-card>

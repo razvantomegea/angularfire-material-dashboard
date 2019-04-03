@@ -1,0 +1,19 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap.gt-xs="12px">
+  <div class="card-section" fxFlex fxFlex.xs="100%">
+    <app-user-profile-settings [metricSystem]="metricSystem" [userInfo]="userInfo" (update)="onProfileUpdate($event)">
+    </app-user-profile-settings>
+  </div>
+  <div class="card-section" fxFlex fxFlex.xs="100%">
+    <app-account-settings [userInfo]="userInfo"
+                          (deleteAccount)="onDeleteAccount()"
+                          (emailChange)="onChangeEmail($event)"
+                          (passwordChange)="onChangePassword()"
+                          (phoneChange)="onChangePhoneNumber($event)"
+                          (providerChange)="onProviderChange($event)"></app-account-settings>
+  </div>
+  <div class="card-section" fxFlex fxFlex.xs="100%">
+    <app-preferences [metricSystem]="metricSystem" [theme]="theme$ | async"
+                     (metricSystemChange)="onChangeMetricSystem($event)"
+                     (themeChange)="onChangeTheme($event)"></app-preferences>
+  </div>
+</div>

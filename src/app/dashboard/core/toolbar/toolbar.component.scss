@@ -1,0 +1,46 @@
+@import 'src/app-variables';
+
+::ng-deep .mat-toolbar {
+  position: relative;
+  z-index: 2;
+}
+
+::ng-deep .mat-toolbar.mat-primary {
+  color: $white-text !important;
+}
+
+::ng-deep .dark-blue-theme .mat-toolbar.mat-primary {
+  background-color: $dark-toolbar;
+}
+
+.title {
+  padding-left: 8px;
+}
+
+.toolbar-user {
+  @media screen and (min-width: 600px) {
+    width: 320px;
+  }
+}
+
+.toolbar-user__info {
+  font-size: 12px;
+  margin-right: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toolbar-user__avatar {
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
+}
+
+.toolbar-user__icon-avatar {
+  height: 40px;
+  width: 40px;
+}
+
+::ng-deep .mat-tooltip {
+  white-space: pre-line !important;
+}

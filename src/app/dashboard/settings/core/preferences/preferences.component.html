@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Preferences</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <mat-icon mat-list-icon>palette</mat-icon>
+        <p fxFlex mat-line>Theme</p>
+        <mat-slide-toggle
+          [class.mat-slide-toggle-content--checked]="isLightTheme()"
+          [checked]="isLightTheme()"
+          (change)="onChangeTheme($event)">Light
+        </mat-slide-toggle>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>swap_horiz</mat-icon>
+        <p fxFlex mat-line>Metric system</p>
+        <mat-slide-toggle
+          [class.mat-slide-toggle-content--checked]="true"
+          [checked]="isMetricSystemStandard()"
+          (change)="onChangeMetricSystem($event)">
+          {{ metricSystem.name }}
+        </mat-slide-toggle>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,80 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap.gt-xs="12px">
+	<div class="card-section" fxFlex fxFlex.xs="100%">
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Sessions</mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<div *ngIf="isPending" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-spinner [mode]="'indeterminate'"></mat-spinner>
+				</div>
+				<app-activity-list *ngIf="!isPending && movement?.sessions?.length"
+				                   (editActivity)="onEditSession($event)"
+				                   (removeActivity)="onDeleteSession($event)"
+				                   [dense]="true"
+				                   [activities]="movement?.sessions"></app-activity-list>
+				<div *ngIf="noData && !isPending" class="no-data-content no-data-list" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-icon>cloud_off</mat-icon>
+					<strong>No sessions available</strong>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div class="card-section" fxFlex fxFlex.xs="100%">
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title fxFlex>Review</mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<div *ngIf="isPending" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-spinner [mode]="'indeterminate'"></mat-spinner>
+				</div>
+				<mat-list *ngIf="!isPending">
+					<mat-list-item>
+						<mat-icon mat-list-icon>whatshot</mat-icon>
+						<p mat-line fxFlex>Energy expenditure</p>
+						<span class="mat-list-item-info"
+						      fxFlex
+						      fxFlex.gt-xs="100%">
+            {{ movement?.energyExpenditure }} kcal
+          </span>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-icon mat-list-icon>timelapse</mat-icon>
+						<p mat-line fxFlex>Duration</p>
+						<span class="mat-list-item-info"
+						      fxFlex
+						      fxFlex.gt-xs="100%">
+            {{ movement?.duration }} minutes
+          </span>
+					</mat-list-item>
+				</mat-list>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div class="card-section" fxFlex fxFlex.xs="100%">
+		<mat-card>
+			<mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+				<mat-card-title fxFlex>Trends</mat-card-title>
+				<button (click)="onTrendsFilter()" [matTooltip]="'Filter trends'" mat-icon-button color="accent">
+					<mat-icon>filter_list</mat-icon>
+				</button>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<canvas baseChart
+				        [datasets]="chartData"
+				        [labels]="chartLabels"
+				        [options]="chartOptions"
+				        [colors]="chartColors"
+				        [legend]="chartLegend"
+				        [chartType]="chartType"></canvas>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>
+<button (click)="onAddSession()" class="fab fab--bottom-right" color="accent" mat-button mat-fab>
+	<mat-icon [matTooltip]="'Add session'">add</mat-icon>
+</button>

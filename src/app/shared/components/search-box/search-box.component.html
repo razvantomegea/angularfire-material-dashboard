@@ -1,0 +1,48 @@
+<div *ngIf="flat" fxLayout="row" fxLayoutAlign="stretch center">
+	<button (click)="onSearch()" matPrefix mat-icon-button>
+		<mat-icon [matTooltip]="'Search'">search</mat-icon>
+	</button>
+	<mat-form-field [floatLabel]="'never'" fxFlex>
+		<mat-label>{{ placeholder }}</mat-label>
+		<input [formControl]="searchInputCtrl"
+		       autofocus
+		       matInput
+		       [placeholder]="placeholder"
+		       type="text"
+		       x-webkit-speech
+		>
+		<button (click)="onClear()" matSuffix mat-icon-button>
+			<mat-icon [matTooltip]="'Clear'">close</mat-icon>
+		</button>
+	</mat-form-field>
+	<div fxLayout="row" fxLayoutAlign="center center">
+		<button (click)="onRecord()" mat-icon-button>
+			<mat-icon [matTooltip]="'Voice search'">mic</mat-icon>
+		</button>
+	</div>
+</div>
+<mat-card *ngIf="!flat" class="search-box">
+	<mat-card-content fxLayout="row" fxLayoutAlign="stretch center">
+		<button (click)="onSearch()" matPrefix mat-icon-button>
+			<mat-icon [matTooltip]="'Search'">search</mat-icon>
+		</button>
+		<mat-form-field [floatLabel]="'never'" fxFlex>
+			<mat-label>{{ placeholder }}</mat-label>
+			<input [formControl]="searchInputCtrl"
+			       autofocus
+			       matInput
+			       [placeholder]="placeholder"
+			       type="text"
+			       x-webkit-speech
+			>
+			<button (click)="onClear()" matSuffix mat-icon-button>
+				<mat-icon [matTooltip]="'Clear'">close</mat-icon>
+			</button>
+		</mat-form-field>
+		<div fxLayout="row" fxLayoutAlign="center center">
+			<button (click)="onRecord()" mat-icon-button>
+				<mat-icon [matTooltip]="'Voice search'">mic</mat-icon>
+			</button>
+		</div>
+	</mat-card-content>
+</mat-card>

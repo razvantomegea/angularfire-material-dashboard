@@ -1,0 +1,75 @@
+<div fxLayout="row wrap" fxLayoutAlign="center">
+  <div class="card-section" fxFlex fxFlex.xs="100%">
+    <div fxLayout="column">
+      <div class="card-section" fxFlex fxFlex.xs="100%">
+        <app-session-edit-details (cancel)="onCancel()"
+                               (delete)="onDelete()"
+                               (favoriteChange)="onFavoritesChange()"
+                               (save)="onSave()"
+                               (update)="onSessionDetailsUpdate($event)"
+                               [session]="session"></app-session-edit-details>
+      </div>
+      <div class="card-section" fxFlex fxFlex.xs="100%">
+        <mat-card class="card--no-padding">
+          <mat-card-header>
+            <mat-card-title>Activities</mat-card-title>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <div *ngIf="isPending && !isLoaded" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+              <mat-spinner [mode]="'indeterminate'"></mat-spinner>
+            </div>
+            <ng-template *ngFor="let session of selectedSessions">
+              <app-activity-list *ngIf="session.activities.length"
+                                       (editActivity)="onEditActivity($event)"
+                                       (removeActivity)="onRemoveActivity($event, 'selectedSessions')"
+                                       [dense]="true"
+                                       [activities]="m.activities"></app-activity-list>
+            </ng-template>
+            <app-activity-list *ngIf="selectedActivities.length"
+                                     (editActivity)="onEditActivity($event)"
+                                     (removeActivity)="onRemoveActivity($event, 'selectedActivities')"
+                                     [dense]="true"
+                                     [activities]="selectedActivities"></app-activity-list>
+            <app-activity-list *ngIf="showActivityList"
+                                     (editActivity)="onEditActivity($event)"
+                                     (removeActivity)="onRemoveActivity($event, 'session.activities')"
+                                     [dense]="true"
+                                     [activities]="session.activities"></app-activity-list>
+            <div *ngIf="!noData && isLoaded && !isPending">
+              <mat-divider></mat-divider>
+              <mat-list dense>
+                <mat-list-item>
+                  <p fxFlex mat-line>Total</p>
+                  <span fxFlex mat-line>{{ calculateTotalDuration() }}minutes ({{ calculateTotalEnergyExpenditure() }}kcal)</span>
+                  <button (click)="onRemoveAll()" mat-icon-button>
+                    <mat-icon color="accent">delete_forever</mat-icon>
+                  </button>
+                </mat-list-item>
+              </mat-list>
+            </div>
+            <div *ngIf="noData && (isLoaded || !isPending)" class="no-data-content no-data-list" fxFlex fxLayout="column"
+                 fxLayoutAlign="stretch center">
+              <mat-icon>cloud_off</mat-icon>
+              <strong>No activities available</strong>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="card-section" fxFlex fxFlex.xs="100%">
+        <app-activity-select
+                (activitiesChange)="onActivitiesChange($event)"
+                (loadMore)="onLoadMore($event)"
+                (sessionsChange)="onSessionsChange($event)"
+                (search)="onSearch($event)"
+                [activities]="activities$ | async"
+                [initialActivities]="selectedActivities"
+                [initialSessions]="selectedSessions"
+                [isPending]="isPending"
+                [sessions]="sessions$ | async"
+        >
+        </app-activity-select>
+      </div>
+    </div>
+  </div>
+</div>

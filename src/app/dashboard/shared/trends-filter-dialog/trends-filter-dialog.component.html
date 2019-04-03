@@ -1,0 +1,73 @@
+<h1 matDialogTitle>Filter trends</h1>
+<mat-divider class="mat-title-divider"></mat-divider>
+<form (ngSubmit)="onSubmit()"
+      [formGroup]="trendsFilterForm"
+      role="form"
+>
+	<mat-dialog-content fxLayout="column">
+		<mat-form-field appearance="outline" fxFlex>
+			<mat-label>End date</mat-label>
+			<input
+							[errorStateMatcher]="formErrorMatcher"
+							[matDatepicker]="dp"
+							[max]="maxDate"
+							[min]="minDate"
+							formControlName="endDate"
+							matInput
+							placeholder="YYYY-MM-DD"
+							required
+			>
+			<mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+			<mat-datepicker #dp></mat-datepicker>
+			<mat-error *ngIf="formErrors['endDate'].currentError">
+				<mat-icon>warning</mat-icon>
+				{{ formErrors['endDate'].currentError }}
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field appearance="outline" fxFlex>
+			<mat-label>Days</mat-label>
+			<mat-select [errorStateMatcher]="formErrorMatcher"
+			            formControlName="days"
+			            placeholder="Days"
+			            required>
+				<mat-option *ngFor="let day of days" [value]="day">
+					{{day}}
+				</mat-option>
+			</mat-select>
+			<mat-error *ngIf="formErrors['days'].currentError">
+				<mat-icon>warning</mat-icon>
+				{{ formErrors['days'].currentError }}
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field appearance="outline" fxFlex>
+			<mat-label>Series</mat-label>
+			<mat-select [errorStateMatcher]="formErrorMatcher"
+			            formControlName="selectedSeries"
+			            placeholder="Series"
+			            required>
+				<mat-option *ngFor="let selectedSeries of data.series" [value]="selectedSeries">
+					{{selectedSeries}}
+				</mat-option>
+			</mat-select>
+			<mat-error *ngIf="formErrors['selectedSeries'].currentError">
+				<mat-icon>warning</mat-icon>
+				{{ formErrors['selectedSeries'].currentError }}
+			</mat-error>
+		</mat-form-field>
+	</mat-dialog-content>
+	<mat-divider class="mat-actions-divider"></mat-divider>
+	<mat-dialog-actions align="start">
+		<button mat-button
+		        matDialogClose
+		        type="button"
+		>CANCEL
+		</button>
+		<span fxFlex></span>
+		<button color="accent"
+		        mat-button
+		        type="submit"
+		>
+			SAVE
+		</button>
+	</mat-dialog-actions>
+</form>

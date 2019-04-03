@@ -1,0 +1,313 @@
+@import 'src/app-variables';
+
+::ng-deep h1, h2, h3, h4, h5, h6, .mat-title, .mat-dialog-title, .mat-subheader, .mat-card-header {
+  font-family: Google Sans, sans-serif !important;
+  font-weight: 500 !important;
+}
+
+::ng-deep .mat-card .mat-card-title {
+  font-family: Google Sans, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 20px;
+}
+
+::ng-deep a {
+  color: $primary-light;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+::ng-deep .mat-card-content, .mat-dialog-content {
+  h1, h2, h3, h4, h5, h6 {
+    font: 500 22px/30px Google Sans, sans-serif;
+  }
+}
+
+::ng-deep .mat-raised-button {
+  color: #ffffff !important;
+}
+
+::ng-deep .mat-fab .mat-button-wrapper {
+  color: #ffffff !important;
+}
+
+::ng-deep .mat-slide-toggle-content--checked .mat-slide-toggle-content {
+  color: $secondary;
+}
+
+.hidden {
+  display: none;
+  position: absolute;
+}
+
+::ng-deep .mat-fab.fab {
+  margin: 0;
+  position: fixed !important;
+  z-index: 2;
+
+  &.fab--bottom-left {
+    bottom: 23px;
+    left: 23px;
+  }
+
+  &.fab--bottom-right {
+    bottom: 23px;
+    right: 40px;
+  }
+
+  &.fab--top-left {
+    left: 23px;
+    top: 23px;
+  }
+
+  &.fab--top-right {
+    right: 40px;
+    top: 23px;
+  }
+}
+
+::ng-deep .mat-list-item-content {
+  .svg-inline--fa {
+    vertical-align: 0;
+  }
+}
+
+::ng-deep .mat-line {
+  text-overflow: ellipsis;
+}
+
+::ng-deep .mat-card-header {
+  button {
+    margin: -8px 0 8px 0;
+  }
+
+  .mat-slide-toggle {
+    margin: 0 0 12px 0;
+  }
+}
+
+::ng-deep .mat-slide-toggle-content {
+  text-transform: uppercase;
+}
+
+::ng-deep .mat-error {
+  align-items: center !important;
+  display: flex !important;
+
+  .mat-icon {
+    margin-right: 4px;
+  }
+}
+
+::ng-deep .snackbar--success {
+  background-color: $secondary !important;
+  color: $white-text !important;
+
+  .mat-button {
+    color: $white-text !important;
+  }
+}
+
+::ng-deep .snackbar--info {
+  background-color: $primary-electric !important;
+  color: $white-text !important;
+
+  .mat-button {
+    color: $white-text !important;
+  }
+}
+
+::ng-deep .snackbar--warn {
+  background-color: $danger !important;
+  color: $white-text !important;
+
+  .mat-button {
+    color: $white-text !important;
+  }
+}
+
+::ng-deep .mat-step-icon, ::ng-deep .mat-step-icon-not-touched {
+  color: $white-text !important;
+}
+
+::ng-deep .mat-calendar-body-selected {
+  color: $white-text !important;
+}
+
+::ng-deep .mat-card img {
+  background-color: #fff;
+}
+
+::ng-deep .light-blue-theme {
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 1px $dark-color;
+    background-color: $white-text;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    background-color: $white-text;
+    border-radius: 4px;
+    height: 4px;
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $dark-gray;
+    border-radius: 4px;
+    box-shadow: 0 0 10px $dark-color-light;
+  }
+
+  .mat-horizontal-stepper-header-container {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+  }
+}
+
+::ng-deep .dark-blue-theme {
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 1px $dark-color-light;
+    background-color: $dark-color;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    background-color: $dark-color;
+    border-radius: 4px;
+    height: 4px;
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $light-gray;
+    border-radius: 4px;
+    box-shadow: 0 0 10px $caption;
+  }
+
+  .mat-dialog-container, .mat-stepper-horizontal, .mat-stepper-vertical, .mat-table, .mat-paginator, .mat-datepicker-content .mat-calendar, .mat-select-content, .mat-select-panel-done-animating, .mat-expansion-panel-header, .mat-expansion-panel-body {
+    background-color: $dark-content !important;
+  }
+
+  .mat-horizontal-stepper-header-container {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: $primary-light !important;
+  }
+
+  .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick, .mat-form-field.mat-focused .mat-form-field-label, .mat-form-field-appearance-outline.mat-focused .mat-form-field-label, .mat-form-field.mat-focused.mat-primary .mat-select-arrow, .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: $primary-light !important;
+  }
+
+  .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: $primary-light !important;
+  }
+
+  .mat-pseudo-checkbox::after {
+    color: $white-text;
+  }
+
+  .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: $primary-light;
+  }
+}
+
+::ng-deep .mat-step-header .mat-step-icon {
+  background-color: $primary-light !important;
+  color: $white-text !important;
+}
+
+::ng-deep .mat-list-item-info {
+  display: block;
+  min-width: 100px;
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+::ng-deep .no-data-content {
+  color: $caption;
+
+  .mat-icon {
+    color: $caption;
+  }
+
+  &.no-data-list {
+    font-size: 16px;
+    padding: 24px 0 12px 0;
+
+    .mat-icon {
+      height: 48px;
+      font-size: 48px;
+      width: 48px;
+    }
+  }
+}
+
+::ng-deep .list-spinner {
+  padding: 24px;
+}
+
+::ng-deep .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
+  background-color: $primary-light !important;
+}
+
+::ng-deep .mat-card.card--no-padding {
+  padding: 0;
+
+  .mat-card-header {
+    padding: 24px 0 18px 24px;
+
+    .mat-card-header-text, .mat-card-title {
+      margin: 0;
+    }
+  }
+}
+
+::ng-deep .mat-card.card--nutrition {
+  .mat-card-header {
+    padding: 20px 24px 12px 32px;
+
+    .mat-slide-toggle {
+      margin: 0;
+    }
+  }
+
+  .mat-expansion-panel-header {
+    padding: 0 32px;
+  }
+}
+
+::ng-deep .mat-card.toolbar-card {
+  padding: 0 !important;
+
+  .mat-card-header, .mat-card-title, .mat-card-header-text {
+    font-size: 16px;
+    width: 100% !important;
+  }
+
+  .mat-card-header, .mat-card-title, button {
+    margin: 0;
+    padding: 0;
+  }
+
+  button {
+    height: 48px;
+    line-height: 48px;
+    width: 48px;
+  }
+
+  @media screen and (max-width: 599px) {
+    margin: 0 0 12px 0;
+  }
+}
+
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}

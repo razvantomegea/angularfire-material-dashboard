@@ -1,0 +1,18 @@
+<mat-form-field [appearance]="config.appearance" [ngClass]="classes" [attr.fxFlex]="config.fxFlex?.default">
+	<mat-label>{{ config.label }}</mat-label>
+	<input
+					[formControl]="control"
+					[placeholder]="config.placeholder"
+					[required]="config.state?.required"
+					atp-time-picker
+					matInput
+					type="time"
+	>
+	<span *ngIf="config.suffix" matSuffix>{{ config.suffix }}</span>
+	<ng-container *ngFor="let validation of config.validations" ngProjectAs="mat-error">
+		<mat-error *ngIf="control.hasError(validation.name)">
+			<mat-icon>warning</mat-icon>
+			{{ validation.message }}
+		</mat-error>
+	</ng-container>
+</mat-form-field>

@@ -1,0 +1,99 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap.gt-xs="12px">
+	<div class="card-section" fxFlex fxFlex.xs="100%">
+		<mat-card>
+			<mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+				<mat-card-title fxFlex>Details</mat-card-title>
+				<button mat-icon-button color="accent" (click)="onBloodLipidsDetailsUpdate()">
+					<mat-icon>create</mat-icon>
+				</button>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<mat-list>
+					<mat-list-item>
+						<mat-icon mat-list-icon>notes</mat-icon>
+						<p mat-line fxFlex>HDL</p>
+						<span class="mat-list-item-info"
+						      fxFlex
+						      fxFlex.gt-xs="100%"
+						      [matTooltip]="isOverflown ? bloodLipids?.hdl : ''"
+						      (mouseover)="onMouseEnter($event)">
+							{{ bloodLipids?.hdl }}
+						</span>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-icon mat-list-icon>notes</mat-icon>
+						<p mat-line fxFlex>LDL</p>
+						<span class="mat-list-item-info"
+						      fxFlex
+						      fxFlex.gt-xs="100%"
+						      [matTooltip]="isOverflown ? bloodLipids?.ldl : ''"
+						      (mouseover)="onMouseEnter($event)">
+							{{ bloodLipids?.ldl }}
+						</span>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-icon mat-list-icon>notes</mat-icon>
+						<p mat-line fxFlex>Triglycerides</p>
+						<span class="mat-list-item-info"
+						      fxFlex
+						      fxFlex.gt-xs="100%"
+						      [matTooltip]="isOverflown ? bloodLipids?.triglycerides : ''"
+						      (mouseover)="onMouseEnter($event)">
+							{{ bloodLipids?.triglycerides }}
+						</span>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-icon mat-list-icon>notes</mat-icon>
+						<p mat-line fxFlex>Total lipids</p>
+						<span class="mat-list-item-info"
+						      fxFlex
+						      fxFlex.gt-xs="100%"
+						      [matTooltip]="isOverflown ? bloodLipids?.total : ''"
+						      (mouseover)="onMouseEnter($event)">
+							{{ bloodLipids?.total }}
+						</span>
+					</mat-list-item>
+					<mat-list-item>
+						<mat-icon mat-list-icon>book</mat-icon>
+						<p mat-line fxFlex>Notes</p>
+						<span class="mat-list-item-info"
+						      fxFlex
+						      fxFlex.gt-xs="100%"
+						      [matTooltip]="isOverflown ? bloodLipids?.notes : ''"
+						      (mouseover)="onMouseEnter($event)">
+							{{ bloodLipids?.notes || 'No notes' }}
+						</span>
+					</mat-list-item>
+				</mat-list>
+			</mat-card-content>
+			<mat-divider></mat-divider>
+			<mat-card-actions fxLayout="row" fxLayoutAlign="start center">
+				<button (click)="onDelete()" [disabled]="!bloodLipids?.id" color="warn" mat-button>DELETE</button>
+				<span fxFlex></span>
+				<button (click)="onCancel()" mat-button>CANCEL</button>
+				<button (click)="onSave()" color="accent" mat-button>SAVE</button>
+			</mat-card-actions>
+		</mat-card>
+	</div>
+	<div class="card-section" fxFlex fxFlex.xs="100%">
+		<mat-card>
+			<mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+				<mat-card-title fxFlex>Trends</mat-card-title>
+				<button (click)="onTrendsFilter()" [matTooltip]="'Filter trends'" mat-icon-button color="accent">
+					<mat-icon>filter_list</mat-icon>
+				</button>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<canvas baseChart
+				        [datasets]="chartData"
+				        [labels]="chartLabels"
+				        [options]="chartOptions"
+				        [colors]="chartColors"
+				        [legend]="chartLegend"
+				        [chartType]="chartType"></canvas>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

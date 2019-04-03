@@ -1,0 +1,8 @@
+@import 'src/app-variables';
+
+::ng-deep .particles-container {
+  background-color: $primary-darker-contrast;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}

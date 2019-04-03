@@ -1,0 +1,47 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap.gt-xs="12px">
+	<div class="card-section" fxFlex fxFlex.xs="100%"s>
+		<mat-card>
+			<mat-card-header fxLayout="row" fxLayoutAlign="space-between center">
+				<mat-card-title fxFlex>Measurements</mat-card-title>
+				<button mat-icon-button color="accent" (click)="onBodyMeasurementsUpdate()">
+					<mat-icon [matTooltip]="'Edit'">create</mat-icon>
+				</button>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<div *ngIf="isPending" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-spinner [mode]="'indeterminate'"></mat-spinner>
+				</div>
+				<app-body-composition-measurements
+								*ngIf="!isPending && bodyComposition"
+								[bodyComposition]="bodyComposition"
+								[metricSystem]="metricSystem"></app-body-composition-measurements>
+				<div *ngIf="noData && !isPending" class="no-data-content no-data-list" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-icon>cloud_off</mat-icon>
+					<strong>No data available</strong>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div class="card-section" fxFlex fxFlex.xs="100%">
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Calculations</mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<div *ngIf="isPending" class="list-spinner" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-spinner [mode]="'indeterminate'"></mat-spinner>
+				</div>
+				<app-body-composition-calculations
+								*ngIf="!isPending && bodyComposition"
+								[bodyComposition]="bodyComposition"
+								[metricSystem]="metricSystem"></app-body-composition-calculations>
+				<div *ngIf="noData && !isPending" class="no-data-content no-data-list" fxFlex fxLayout="column" fxLayoutAlign="stretch center">
+					<mat-icon>cloud_off</mat-icon>
+					<strong>No data available</strong>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+<mat-accordion [multi]="true" fxLayout="column">
+	<mat-expansion-panel *ngFor="let group of nutrientGroups" class="mat-elevation-z0">
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				{{ group.name }}
+			</mat-panel-title>
+		</mat-expansion-panel-header>
+		<mat-list dense>
+			<mat-list-item *ngFor="let nutrient of group.nutrients">
+				<p fxFlex mat-line>{{ nutrient.name }}</p>
+				<span class="mat-list-item-info"
+				      fxFlex
+				      fxFlex.gt-xs="100%"
+				      [matTooltip]="isOverflown ? nutrient.getData() : ''"
+				      (mouseover)="onMouseEnter($event)">
+            {{ nutrient.getData() }}
+          </span>
+			</mat-list-item>
+		</mat-list>
+	</mat-expansion-panel>
+</mat-accordion>

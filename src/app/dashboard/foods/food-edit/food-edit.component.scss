@@ -1,0 +1,37 @@
+.mat-card-header {
+  padding: 12px 12px 12px 24px !important;
+
+  h2 {
+    font-size: 18px;
+  }
+
+  button {
+    margin: 0 12px 0 0;
+    padding: 0;
+  }
+}
+
+::ng-deep .food-edit {
+  .mat-step .mat-vertical-content {
+    padding: 0 !important;
+  }
+
+  .mat-step:last-child {
+    .mat-vertical-content-container {
+      margin: 0 !important;
+
+      .mat-card-content {
+        padding: 0 !important;
+      }
+    }
+  }
+
+  .food-edit-description {
+    padding: 0 24px;
+  }
+
+  .mat-card-actions {
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+}

@@ -1,0 +1,27 @@
+<h1 matDialogTitle>Edit blood pressure</h1>
+<mat-divider class="mat-title-divider"></mat-divider>
+<app-dynamic-form-dialog
+				(submitted)="onSubmit($event)"
+				(valueChange)="onFormValueChanges($event)"
+				[classes]="formClasses"
+				[configs]="formConfigs"
+				[flexLayout]="{default: 'column'}"
+				[initialData]="initialFormData"
+>
+	<mat-divider class="mat-actions-divider"></mat-divider>
+	<mat-dialog-actions align="end">
+		<button
+						mat-button
+						matDialogClose
+						type="button"
+		>CANCEL
+		</button>
+		<button
+						color="accent"
+						mat-button
+						type="submit"
+		>
+			SAVE
+		</button>
+	</mat-dialog-actions>
+</app-dynamic-form-dialog>

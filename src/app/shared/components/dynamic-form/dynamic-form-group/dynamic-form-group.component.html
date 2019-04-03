@@ -1,0 +1,15 @@
+<div [formGroup]="control"
+     [attr.fxFlex]="config.fxFlex?.default"
+     [fxLayout]="config.fxLayout?.default"
+     [fxLayout.xs]="config.fxLayout?.xs"
+     [fxLayoutGap]="config.fxLayoutGap?.default"
+     [fxLayoutGap.xs]="config.fxLayoutGap?.xs"
+     [fxLayoutAlign]="config.fxLayoutAlign?.default">
+	<ng-container
+					*ngFor="let c of config.configs"
+					appDynamicFormField
+					[config]="c"
+					[control]="control.get(c.formControlName)"
+	>
+	</ng-container>
+</div>

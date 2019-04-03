@@ -1,0 +1,16 @@
+<h1 matDialogTitle>{{ data.title }}</h1>
+<mat-dialog-content fxLayout="column">
+	<p>{{ data.message }}</p>
+	<mat-form-field appearance="outline"
+	                fxFlex>
+		<mat-label>{{ data.inputLabel }}</mat-label>
+		<input [(ngModel)]="inputValue"
+		       [placeholder]="data.placeholder"
+		       [type]="data.inputType"
+		       matInput>
+	</mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+	<button mat-button matDialogClose>CANCEL</button>
+	<button (click)="onConfirm()" color="accent" mat-button>OK</button>
+</mat-dialog-actions>

@@ -1,0 +1,10 @@
+<mat-selection-list [formControl]="control">
+	<h4 mat-subheader>{{ config.subheader }}</h4>
+	<mat-list-option
+					(click)="onSelect(option)"
+					*ngFor="let option of config.options"
+					[value]="option.value"
+	>
+		{{ option.label }}
+	</mat-list-option>
+</mat-selection-list>

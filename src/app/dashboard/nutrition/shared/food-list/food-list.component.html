@@ -1,0 +1,24 @@
+<mat-list *ngIf="!dense">
+	<mat-list-item *ngFor="let food of foods; let idx = index">
+		<p fxFlex mat-line>{{ getName(food) }}</p>
+		<span fxFlex mat-line>{{ food.quantity }}{{ food.unit }}</span>
+		<button (click)="onEditFood(food)" mat-icon-button>
+			<mat-icon color="accent">create</mat-icon>
+		</button>
+		<button (click)="onRemoveFood(idx)" mat-icon-button>
+			<mat-icon color="warn">delete</mat-icon>
+		</button>
+	</mat-list-item>
+</mat-list>
+<mat-list *ngIf="!!dense" dense>
+	<mat-list-item *ngFor="let food of foods; let idx = index">
+		<p fxFlex mat-line>{{ getName(food) }}</p>
+		<span fxFlex mat-line>{{ food.quantity }}{{ food.unit }}</span>
+		<button (click)="onEditFood(food)" mat-icon-button>
+			<mat-icon color="accent">create</mat-icon>
+		</button>
+		<button (click)="onRemoveFood(idx)" mat-icon-button>
+			<mat-icon color="warn">delete</mat-icon>
+		</button>
+	</mat-list-item>
+</mat-list>

@@ -1,0 +1,102 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Account</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <mat-list>
+      <h3 mat-subheader>Sign-in methods</h3>
+      <mat-list-item>
+        <fa-icon class="mat-24" [icon]="['fab', 'facebook']"
+                 mat-list-icon></fa-icon>
+        <p fxFlex mat-line>Facebook</p>
+        <mat-slide-toggle
+          [class.mat-slide-toggle-content--checked]="isLinked(providerIds.FACEBOOK)"
+          [checked]="isLinked(providerIds.FACEBOOK)"
+          (toggleChange)="onLinkToggle(providerIds.FACEBOOK)">
+          {{ isLinked(providerIds.FACEBOOK) ? 'Linked' : 'Not linked' }}
+        </mat-slide-toggle>
+      </mat-list-item>
+      <mat-list-item>
+        <fa-icon [icon]="['fab', 'github']" mat-list-icon></fa-icon>
+        <p fxFlex mat-line>Github</p>
+        <mat-slide-toggle
+          [class.mat-slide-toggle-content--checked]="isLinked(providerIds.GITHUB)"
+          [checked]="isLinked(providerIds.GITHUB)"
+          (toggleChange)="onLinkToggle(providerIds.GITHUB)">
+          {{ isLinked(providerIds.GITHUB) ? 'Linked' : 'Not linked' }}
+        </mat-slide-toggle>
+      </mat-list-item>
+      <mat-list-item>
+        <fa-icon [icon]="['fab', 'google']" mat-list-icon></fa-icon>
+        <p fxFlex mat-line>Google</p>
+        <mat-slide-toggle
+          [class.mat-slide-toggle-content--checked]="isLinked(providerIds.GOOGLE)"
+          [checked]="isLinked(providerIds.GOOGLE)"
+          (toggleChange)="onLinkToggle(providerIds.GOOGLE)">
+          {{ isLinked(providerIds.GOOGLE) ? 'Linked' : 'Not linked' }}
+        </mat-slide-toggle>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>phone</mat-icon>
+        <p fxFlex mat-line>{{ userInfo?.phoneNumber || 'Phone number'}}</p>
+        <mat-slide-toggle
+          [class.mat-slide-toggle-content--checked]="isLinked(providerIds.PHONE)"
+          [checked]="isLinked(providerIds.PHONE)"
+          (toggleChange)="onLinkToggle(providerIds.PHONE)">
+          {{ isLinked(providerIds.PHONE) ? 'Linked' : 'Not linked' }}
+        </mat-slide-toggle>
+      </mat-list-item>
+      <mat-list-item>
+        <fa-icon [icon]="['fab', 'twitter']" mat-list-icon></fa-icon>
+        <p fxFlex mat-line>Twitter</p>
+        <mat-slide-toggle
+          [class.mat-slide-toggle-content--checked]="isLinked(providerIds.TWITTER)"
+          [checked]="isLinked(providerIds.TWITTER)"
+          (toggleChange)="onLinkToggle(providerIds.TWITTER)">
+          {{ isLinked(providerIds.TWITTER) ? 'Linked' : 'Not linked' }}
+        </mat-slide-toggle>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Management</h3>
+      <mat-list-item>
+        <mat-icon mat-list-icon>verified_user</mat-icon>
+        <p fxFlex mat-line>Verify email</p>
+        <mat-slide-toggle
+          [class.mat-slide-toggle-content--checked]="userInfo?.emailVerified"
+          [checked]="userInfo?.emailVerified"
+          [disabled]="userInfo?.emailVerified">
+          {{ userInfo?.emailVerified ? 'Verified' : 'Not verified' }}
+        </mat-slide-toggle>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>mail</mat-icon>
+        <p fxFlex mat-line>Change email</p>
+        <button color="accent" mat-button (click)="onChangeEmail()">
+          CHANGE
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>lock_open</mat-icon>
+        <p fxFlex mat-line>Change password</p>
+        <button color="accent" mat-button (click)="onChangePassword()">
+          CHANGE
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>phone</mat-icon>
+        <p fxFlex mat-line>Change phone number</p>
+        <button color="accent" mat-button (click)="onChangePhoneNumber()">
+          CHANGE
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>delete_forever</mat-icon>
+        <p fxFlex mat-line>Delete account</p>
+        <button color="warn" mat-raised-button (click)="onDeleteAccount()">
+          DELETE
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

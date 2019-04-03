@@ -1,0 +1,49 @@
+@import 'src/app-variables';
+
+::ng-deep .auth {
+  @include angular-material-theme($light-blue-theme);
+  margin-top: 28px;
+  min-width: 400px;
+  padding: 12px 24px !important;
+
+  .auth__header {
+    background: linear-gradient(60deg, $primary-light-contrast, $primary-darker-contrast);
+    border-radius: 3px;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(233, 30, 99, 0.4);
+    color: $primary-lightest;
+    margin-bottom: -12px;
+    padding-top: 12px;
+    position: relative;
+    text-align: center;
+    top: -56px;
+
+    .mat-card-subtitle:not(:first-child) {
+      margin-top: 0;
+    }
+
+    .mat-icon-button {
+      color: $primary-lightest !important;
+    }
+  }
+
+  .auth__content {
+    .mat-form-field {
+      margin-bottom: 2px !important;
+      width: 100%;
+    }
+  }
+
+  .auth__actions {
+    margin: 12px -16px -16px -16px !important;
+    padding: 0 !important;
+
+    .terms-container {
+      padding-top: 8px;
+    }
+  }
+
+  .auth__submit {
+    margin: 0 16px 16px 16px !important;
+  }
+}

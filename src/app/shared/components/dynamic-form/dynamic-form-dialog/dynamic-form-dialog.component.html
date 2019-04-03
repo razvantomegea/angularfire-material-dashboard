@@ -1,0 +1,22 @@
+<form (ngSubmit)="onSubmit($event)"
+      *ngIf="form"
+      [formGroup]="form"
+      class="dynamic-form"
+      role="form"
+>
+	<mat-dialog-content [ngClass]="classes"
+	                    [attr.fxFlex]="flex?.default"
+	                    [fxLayout]="flexLayout?.default"
+	                    [fxLayoutGap]="flexLayoutGap?.default"
+	                    [fxLayoutAlign]="flexLayoutAlign?.default">
+		<ng-container
+						*ngFor="let config of configs"
+						[config]="config"
+						[control]="form.get(config.formControlName)"
+						[group]="form"
+						appDynamicFormField
+		>
+		</ng-container>
+	</mat-dialog-content>
+	<ng-content></ng-content>
+</form>

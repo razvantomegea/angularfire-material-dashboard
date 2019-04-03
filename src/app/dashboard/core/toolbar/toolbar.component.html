@@ -1,0 +1,33 @@
+<mat-toolbar class="mat-elevation-z5" color="primary" role="toolbar">
+  <button mat-icon-button (click)="onToggleSideNav()">
+    <mat-icon [matTooltip]="'Toggle navigation'">menu</mat-icon>
+  </button>
+  <h1 class="title" fxFlex>{{ title }}</h1>
+  <div class="toolbar-user" fxLayout="row"
+       fxLayoutAlign="space-evenly center">
+    <span fxHide.xs="true" class="toolbar-user__info"
+          [matTooltip]="getTooltipUserInfo()"
+          [matTooltipPosition]="'below'"
+          [matTooltipClass]="'tooltip'">
+      Logged in as {{ userInfo?.displayName }}
+    </span>
+    <img *ngIf="userInfo?.photoURL; else avatarIcon"
+         [src]="userInfo?.photoURL"
+         alt="User avatar"
+         class="toolbar-user__avatar"/>
+    <ng-template #avatarIcon>
+      <mat-icon class="toolbar-user__icon-avatar">
+        account_circle
+      </mat-icon>
+    </ng-template>
+    <button fxHide.xs="true"
+            mat-icon-button
+            [matTooltip]="'Log out'"
+            [matTooltipPosition]="'below'"
+            [matTooltipClass]="'tooltip'"
+            (click)="onLogout()">
+      <mat-icon class="mat-24">input</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+

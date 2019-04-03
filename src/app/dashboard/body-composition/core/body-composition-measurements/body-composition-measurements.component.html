@@ -1,0 +1,65 @@
+<mat-list>
+	<mat-list-item>
+		<fa-icon [icon]="['fas', 'ruler-horizontal']" mat-list-icon></fa-icon>
+		<p mat-line fxFlex>Chest</p>
+		<span class="mat-list-item-info"
+		      fxFlex
+		      fxFlex.gt-xs="100%">
+            {{ getChestMeasurement() }}
+          </span>
+	</mat-list-item>
+	<mat-list-item>
+		<fa-icon [icon]="['fas', 'ruler-vertical']" mat-list-icon></fa-icon>
+		<p fxFlex mat-line>Height</p>
+		<span class="mat-list-item-info"
+		      fxFlex
+		      fxFlex.gt-xs="100%">
+            {{ getHeightMeasurement() }}
+          </span>
+	</mat-list-item>
+	<mat-list-item>
+		<fa-icon [icon]="['fas', 'ruler-horizontal']" mat-list-icon></fa-icon>
+		<p mat-line fxFlex>Hips</p>
+		<span class="mat-list-item-info"
+		      fxFlex
+		      fxFlex.gt-xs="100%">
+            {{ getHipsMeasurement() }}
+          </span>
+	</mat-list-item>
+	<mat-list-item>
+		<fa-icon [icon]="['fas', 'ruler-horizontal']" mat-list-icon></fa-icon>
+		<p mat-line fxFlex>Iliac</p>
+		<span class="mat-list-item-info"
+		      fxFlex
+		      fxFlex.gt-xs="100%">
+            {{ getIliacMeasurement() }}
+          </span>
+	</mat-list-item>
+	<mat-list-item>
+		<fa-icon [icon]="['fas', 'heartbeat']" mat-list-icon></fa-icon>
+		<p mat-line fxFlex>Resting heart rate</p>
+		<span class="mat-list-item-info"
+		      fxFlex
+		      fxFlex.gt-xs="100%">
+            {{ getRestingHeartRate() }}
+          </span>
+	</mat-list-item>
+	<mat-list-item>
+		<fa-icon [icon]="['fas', 'ruler-horizontal']" mat-list-icon></fa-icon>
+		<p mat-line fxFlex>Waist</p>
+		<span class="mat-list-item-info"
+		      fxFlex
+		      fxFlex.gt-xs="100%">
+            {{ getWaistMeasurement() }}
+          </span>
+	</mat-list-item>
+	<mat-list-item>
+		<fa-icon [icon]="['fas', 'weight']" mat-list-icon></fa-icon>
+		<p fxFlex mat-line>Weight</p>
+		<span class="mat-list-item-info"
+		      fxFlex
+		      fxFlex.gt-xs="100%">
+           {{ getWeightMeasurement() }}
+          </span>
+	</mat-list-item>
+</mat-list>
