@@ -12,8 +12,8 @@
 	</div>
 	<mat-divider></mat-divider>
 	<app-dynamic-form (created)="onFormCreated($event)" (valueChange)="onFormValueChanges($event)"
-		[classes]="formClasses" [configs]="formConfigs" [flexLayout]="{default: 'column'}"
-		[initialData]="initialFormData">
+	                  [configs]="formConfigs" [flexLayout]="{default: 'column'}"
+	                  [initialData]="initialFormData">
 	</app-dynamic-form>
 </mat-dialog-content>
 <mat-divider class="mat-actions-divider"></mat-divider>

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 import { DynamicFormDatepickerConfig } from 'app/shared/components/dynamic-form';
 
 @Component({
@@ -7,6 +8,8 @@ import { DynamicFormDatepickerConfig } from 'app/shared/components/dynamic-form'
   styleUrls: ['./dynamic-form-datepicker.component.scss']
 })
 export class DynamicFormDatepickerComponent {
+  @Input() public classes: string[];
   @Input() public config: DynamicFormDatepickerConfig;
+  @Input() public control: AbstractControl;
 
 }

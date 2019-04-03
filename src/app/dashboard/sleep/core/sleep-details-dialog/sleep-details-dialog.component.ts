@@ -198,7 +198,7 @@ export class SleepDetailsDialogComponent extends DialogClosed {
     StorageService.save(SLEEP_DETAILS, this.sleepData);
   }
 
-  protected onSubmit(value: FormValue, isNextStep?: boolean): void {
+  public onSubmit(value: FormValue, isNextStep?: boolean): void {
     if (!isNextStep) {
       StorageService.delete(SLEEP_DETAILS);
       this.dialogRef.close(this.sleepData);

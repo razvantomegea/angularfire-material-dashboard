@@ -81,9 +81,21 @@ export class SleepComponent extends Trends implements OnInit {
     });
   }
 
+  public onCancel(): void {
+
+  }
+
+  public onDelete(): void {
+
+  }
+
   public onMouseEnter(event: Event): void {
     const nodeEl: HTMLElement = <HTMLElement>event.target;
     this.isOverflown = nodeEl.scrollWidth > nodeEl.offsetWidth || nodeEl.scrollHeight > nodeEl.offsetHeight;
+  }
+
+  public onSave(): void {
+
   }
 
   public onSleepDetailsUpdate(): void {

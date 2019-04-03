@@ -12,20 +12,22 @@ import { DynamicFormConfig, FlexboxConfig } from './models';
   styleUrls: ['./dynamic-form.component.scss']
 })
 export class DynamicFormComponent<T> extends ComponentDestroyed implements OnChanges, AfterContentInit {
+  @Input() protected initialData: T;
+  @Input() protected isCardContent: boolean;
+  @Input() public classes: string[];
+  @Input() public configs: DynamicFormConfig[];
+  @Input() public flex: FlexboxConfig;
+  @Input() public flexLayout: FlexboxConfig = { default: 'column' };
+  @Input() public flexLayoutAlign: FlexboxConfig = { default: 'start' };
+  @Input() public flexLayoutGap: FlexboxConfig = { default: '0px' };
+
   @Output() protected readonly created: EventEmitter<FormGroup> = new EventEmitter();
   @Output() protected readonly submitted: EventEmitter<T> = new EventEmitter();
   @Output() protected readonly valueChange: EventEmitter<T> = new EventEmitter();
-  @Input() protected classes: string[];
-  @Input() protected configs: DynamicFormConfig[];
-  @Input() protected flex: FlexboxConfig;
-  @Input() protected flexLayout: FlexboxConfig = { default: 'column' };
-  @Input() protected flexLayoutAlign: FlexboxConfig = { default: 'start' };
-  @Input() protected flexLayoutGap: FlexboxConfig = { default: '0px' };
-  protected form: FormGroup;
+
+  public form: FormGroup;
+
   protected formValueSubscription: Subscription;
-  @Input() protected initialData: T;
-  @Input() protected isCardContent: boolean;
-  private timeoutId: number;
 
   constructor(protected dynamicFormService: DynamicFormService) {
     super();
@@ -52,7 +54,7 @@ export class DynamicFormComponent<T> extends ComponentDestroyed implements OnCha
     }
   }
 
-  protected onSubmit(event: Event): void {
+  public onSubmit(event: Event): void {
     event.preventDefault();
     event.stopPropagation();
 

@@ -50,9 +50,9 @@ export class UserService extends DataService<UserInfo> {
 
         return this.currentDataDoc$.valueChanges().pipe(map((userInfo: UserInfo) => UserService.mapUserInfo(
           userInfo)));
-      } else {
-        return of(null);
       }
+
+      return of(null);
     }));
   }
 
@@ -64,7 +64,11 @@ export class UserService extends DataService<UserInfo> {
     await this.afAuth.auth.currentUser.updateProfile({
       displayName: user.displayName, photoURL: user.photoURL
     });
-    await this.afAuth.auth.currentUser.updateEmail(user.email);
+
+    if (user.email) {
+      await this.afAuth.auth.currentUser.updateEmail(user.email);
+    }
+
     await this.saveData(user);
 
     return user;

@@ -25,7 +25,8 @@ The current scope of the dashboard is health and fitness tracker, with the purpo
 - Biomarkers tracking (Blood ketones, lipids, glucose, and pressure).
 
 ## Preview
-![Preivew](https://github.com/razvantomegea/angularfire-material-dashboard/blob/master/src/assets/img/preview.png)
+![Authentication Preview](https://github.com/razvantomegea/angularfire-material-dashboard/blob/master/src/assets/img/preview-auth.png)
+![Dashboard Preview](https://github.com/razvantomegea/angularfire-material-dashboard/blob/master/src/assets/img/preview-dashboard.png)
 
 ## Demo
 [Checkout demo](https://angularfire-material-dashboard.firebaseapp.com)
@@ -263,13 +264,12 @@ Download and install [Node.js](https://nodejs.org/en/download/) v8.15.0 or highe
 npm install
 ```
 
-## Firebase setup setup
+## Firebase setup
 Create a new [Firebase](https://console.firebase.google.com) project and add the web configuration data in `src/app/core/firebase/config.ts`.
 ![Firebase configuration](https://github.com/razvantomegea/angularfire-material-dashboard/blob/master/src/assets/img/firebase-config.png)
 
 Enable sign-in methods. Currently, only Email/Password, Phone, Google, Facebook, Twitter, and Github are implemented.
 ![Firebase sign-in methods](https://github.com/razvantomegea/angularfire-material-dashboard/blob/master/src/assets/img/firebase-auth-methods.png)
-
 
 ## Development server
 

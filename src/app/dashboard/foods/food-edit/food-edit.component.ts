@@ -29,6 +29,7 @@ class FoodDescriptionFormValue {
   styleUrls: ['./food-edit.component.scss']
 })
 export class FoodEditComponent extends ComponentDestroyed implements OnInit {
+  public readonly foodId: string;
   public readonly nutrientGroups: any[] = [];
   public foodDescriptionForm: FormGroup = new FormGroup({});
   public foodNutritionForm: FormGroup;
@@ -40,7 +41,6 @@ export class FoodEditComponent extends ComponentDestroyed implements OnInit {
     takeUntil(this.isDestroyed$)
   );
   private readonly foodGroups: string[];
-  private readonly foodId: string;
   private readonly nutrients$: Observable<USDANutrient[]> = this.store.pipe(
     select(fromFoods.getNutrients),
     takeUntil(this.isDestroyed$)

@@ -19,10 +19,12 @@
 			>
 			<mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
 			<mat-datepicker #dp></mat-datepicker>
-			<mat-error *ngIf="formErrors['endDate'].currentError">
-				<mat-icon>warning</mat-icon>
-				{{ formErrors['endDate'].currentError }}
-			</mat-error>
+			<ng-container *ngFor="let error of formErrors" ngProjectAs="mat-error">
+				<mat-error *ngIf="hasError('endDays', error)">
+					<mat-icon>warning</mat-icon>
+					{{ error.errorMessage }}
+				</mat-error>
+			</ng-container>
 		</mat-form-field>
 		<mat-form-field appearance="outline" fxFlex>
 			<mat-label>Days</mat-label>
@@ -34,10 +36,12 @@
 					{{day}}
 				</mat-option>
 			</mat-select>
-			<mat-error *ngIf="formErrors['days'].currentError">
-				<mat-icon>warning</mat-icon>
-				{{ formErrors['days'].currentError }}
-			</mat-error>
+			<ng-container *ngFor="let error of formErrors" ngProjectAs="mat-error">
+				<mat-error *ngIf="hasError('days', error)">
+					<mat-icon>warning</mat-icon>
+					{{ error.errorMessage }}
+				</mat-error>
+			</ng-container>
 		</mat-form-field>
 		<mat-form-field appearance="outline" fxFlex>
 			<mat-label>Series</mat-label>
@@ -49,10 +53,12 @@
 					{{selectedSeries}}
 				</mat-option>
 			</mat-select>
-			<mat-error *ngIf="formErrors['selectedSeries'].currentError">
-				<mat-icon>warning</mat-icon>
-				{{ formErrors['selectedSeries'].currentError }}
-			</mat-error>
+			<ng-container *ngFor="let error of formErrors" ngProjectAs="mat-error">
+				<mat-error *ngIf="hasError('selectedSeries', error)">
+					<mat-icon>warning</mat-icon>
+					{{ error.errorMessage }}
+				</mat-error>
+			</ng-container>
 		</mat-form-field>
 	</mat-dialog-content>
 	<mat-divider class="mat-actions-divider"></mat-divider>

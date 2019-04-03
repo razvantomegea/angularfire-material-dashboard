@@ -108,9 +108,9 @@ export class FormValidationComponent extends ComponentDestroyed {
 }
 
 export class DialogFormValidation extends DialogClosed {
-  protected readonly formErrorMatcher: FormErrorStateMatcher = new FormErrorStateMatcher();
+  public readonly formErrorMatcher: FormErrorStateMatcher = new FormErrorStateMatcher();
+  public formErrors: FormValidationErrors;
   protected form: FormGroup;
-  protected formErrors: FormValidationErrors;
 
   constructor(protected dialogRef: MatDialogRef<any>, protected router: Router) {
     super(dialogRef, router);

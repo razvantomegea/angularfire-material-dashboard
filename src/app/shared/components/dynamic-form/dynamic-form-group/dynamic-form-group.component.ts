@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 
 import { DynamicFormGroupConfig } from './dynamic-form-group-config';
 
@@ -9,4 +10,5 @@ import { DynamicFormGroupConfig } from './dynamic-form-group-config';
 })
 export class DynamicFormGroupComponent {
   @Input() public config: DynamicFormGroupConfig;
+  @Input() public control: AbstractControl;
 }

@@ -22,7 +22,7 @@ export const REQUIRED_PASSWORD_CONFIRMATION: FormErrorMessage = new FormErrorMes
 export const PASSWORD_NO_MATCH: FormErrorMessage = new FormErrorMessage('passwordConfirm', 'noMatch', `Passwords don't match`);
 export const REQUIRED_PHONE_NUMBER: FormErrorMessage = new FormErrorMessage('phoneNumber', 'required', 'Phone number is required');
 export const INVALID_PHONE_NUMBER: FormErrorMessage = new FormErrorMessage('phoneNumber', 'isInvalid', 'Phone number is invalid');
-export const REQUIRED_CODE: FormErrorMessage = new FormErrorMessage('password', 'required', 'Password is required');
+export const REQUIRED_CODE: FormErrorMessage = new FormErrorMessage('password', 'required', 'Code is required');
 export const SHORT_CODE: FormErrorMessage = new FormErrorMessage(
   'confirmCode',
   'minlength',

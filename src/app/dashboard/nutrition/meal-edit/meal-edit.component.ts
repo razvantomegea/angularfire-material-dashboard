@@ -49,6 +49,7 @@ export class MealEditComponent extends ComponentDestroyed implements OnInit {
     takeUntil(this.isDestroyed$)
   );
   public hasFoods = false;
+  public isLoaded = false;
   public isPending = true;
   public meal: Meal = new Meal();
   public noData = false;
@@ -58,9 +59,7 @@ export class MealEditComponent extends ComponentDestroyed implements OnInit {
   public selectedUSDAFoods: FoodReport[] = [];
   public showFoodList = false;
   public showFullNutrition = false;
-
   private readonly mealId: string;
-  private isLoaded = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,

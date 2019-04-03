@@ -111,9 +111,22 @@ export class BloodKetonesComponent extends Trends implements OnInit {
     });
   }
 
+  // TODO: Implement methods
+  public onCancel(): void {
+
+  }
+
+  public onDelete(): void {
+
+  }
+
   public onMouseEnter(event: Event): void {
     const nodeEl: HTMLElement = <HTMLElement>event.target;
     this.isOverflown = nodeEl.scrollWidth > nodeEl.offsetWidth || nodeEl.scrollHeight > nodeEl.offsetHeight;
+  }
+
+  public onSave(): void {
+
   }
 
   public onTrendsChange(): void {

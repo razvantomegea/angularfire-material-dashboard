@@ -48,6 +48,8 @@ export class ActivityService {
 
               return this.getFilteredActivities(query);
             }
+
+            return activities;
           }));
       }
 

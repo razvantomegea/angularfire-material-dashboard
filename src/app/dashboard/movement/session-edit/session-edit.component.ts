@@ -46,7 +46,7 @@ export class SessionEditComponent extends ComponentDestroyed implements OnInit {
   public showActivityList = false;
   private readonly sessionId: string;
   private activityQuery: ActivityQuery = new ActivityQuery('name', '', 50, 0);
-  private isLoaded = false;
+  public isLoaded = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,

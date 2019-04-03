@@ -95,7 +95,7 @@ export class BloodPressureComponent extends Trends implements OnInit {
   // TODO: Implement dialog
   public onBloodPressureDetailsUpdate(): void {
     this.dialog.open(BloodPressureDetailsDialogComponent, {
-      closeOnNavigation: true, data: this.bloodPressure, disableClose: true,  maxWidth: '600px'
+      closeOnNavigation: true, data: this.bloodPressure, disableClose: true, maxWidth: '600px'
     }).afterClosed().pipe(take(1)).toPromise().then((data: BloodPressureDetailsDialogData) => {
       if (data && data.isDirty) {
         const newBloodPressure: BloodPressure = new BloodPressure(
@@ -111,9 +111,22 @@ export class BloodPressureComponent extends Trends implements OnInit {
     });
   }
 
+  // TODO: Implement methods
+  public onCancel(): void {
+
+  }
+
+  public onDelete(): void {
+
+  }
+
   public onMouseEnter(event: Event): void {
     const nodeEl: HTMLElement = <HTMLElement>event.target;
     this.isOverflown = nodeEl.scrollWidth > nodeEl.offsetWidth || nodeEl.scrollHeight > nodeEl.offsetHeight;
+  }
+
+  public onSave(): void {
+
   }
 
   public onTrendsChange(): void {

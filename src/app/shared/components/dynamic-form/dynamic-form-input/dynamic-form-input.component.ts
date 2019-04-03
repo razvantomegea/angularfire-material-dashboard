@@ -1,4 +1,5 @@
 import { AfterContentInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 import { auth } from 'firebase/app';
 import 'intl-tel-input';
 import 'intl-tel-input/build/js/utils';
@@ -12,10 +13,12 @@ import { DynamicFormInputConfig } from './dynamic-form-input-config';
   styleUrls: ['./dynamic-form-input.component.scss']
 })
 export class DynamicFormInputComponent implements AfterContentInit, OnChanges {
+  @Input() public classes: string[];
   @Input() public config: DynamicFormInputConfig;
+  @Input() public control: AbstractControl;
   public reCaptchaVerified = false;
-  private readonly windowRef: any = window;
   @ViewChild('formInput') protected formInput: ElementRef;
+  private readonly windowRef: any = window;
 
   public ngAfterContentInit(): void {
     setTimeout(() => {

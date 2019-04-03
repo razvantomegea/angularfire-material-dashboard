@@ -26,7 +26,7 @@ export class TrendsFilterDialogComponent extends DialogFormValidation {
   public trendsFilterForm: FormGroup;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) private data: TrendsFilterDialogData,
+    @Inject(MAT_DIALOG_DATA) public data: TrendsFilterDialogData,
     protected dialogRef: MatDialogRef<TrendsFilterDialogComponent>,
     protected router: Router
   ) {
@@ -34,7 +34,7 @@ export class TrendsFilterDialogComponent extends DialogFormValidation {
     this.setupForm();
   }
 
-  protected onSubmit(): void {
+  public onSubmit(): void {
     super.onSubmit();
 
     if (this.trendsFilterForm.valid) {
