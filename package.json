@@ -1,10 +1,11 @@
 {
-  "name": "angular-fire",
-  "description": "Cross platform health and fitness app",
+  "name": "angularfire-material-dashboard",
+  "description": "Cross platform full authentication system and dashboard implemented with Angular 6, Firebase, Material Design, NgRx, Electron and Nativescript.",
   "version": "1.0.0",
   "author": "Razvan Tomegea",
-  "homepage": "https://angularfirematerialdashboard.org",
-  "private": true,
+  "homepage": "https://angularfire-materiald-ashboard.firebaseapp.com",
+  "license": "MIT",
+  "private": false,
   "main": "electron-main.js",
   "nativescript": {
     "id": "org.nativescript.angularfirematerialdashboard",

@@ -1,7 +1,10 @@
 ## Introduction
-Vue Material Admin Template is a [Vue](https://vuejs.org/index.html/) Based Material Design Admin Template.
-And use [Vuetifyjs](https://vuetifyjs.com/) as base framework.
-Vuetify is Awesome.
+Angularfire Material Dashboard is a cross platform dashboard with a full authentication system that uses [Angular](https://angular.io/) and [Angular Material](https://material.angular.io/) and Frontend frameworks and [Firebase](https://firebase.google.com/) ([Angularfire](https://github.com/angular/angularfire2)) as Backend framework.
+
+It also uses [NgRx](https://ngrx.github.io/) as state management, [Electron](https://electronjs.org) as desktop portability framework, and [NativeScript](https://www.nativescript.org/) as mobile (Android and Ios) portability framework.
+
+**Note**: The project UI (html to xml) is not implemented with NativeScript yet, but it can easily
+ be done as the source code is shared.
 
 ## Features
 
@@ -12,6 +15,7 @@ Vuetify is Awesome.
 ``` bash
 
 ```
+
 ## Prerequisites
 Download and install [Node.js](https://nodejs.org/en/download/) v8.15.0 or higher.
 
@@ -21,12 +25,11 @@ npm install
 ```
 
 ## Firebase setup setup
-Create a new [Firebase](https://console.firebase.google.com) project and add the web configuration data in `src/app/core/firebase/config
-.ts`.
+Create a new [Firebase](https://console.firebase.google.com) project and add the web configuration data in `src/app/core/firebase/config.ts`.
 ![Firebase configuration](https://github.com/razvantomegea/angularfire-material-dashboard/blob/master/src/assets/img/firebase-config.png)
 
 Enable sign-in methods. Currently, only Email/Password, Phone, Google, Facebook, Twitter, and Github are implemented.
-![Firebase sign-in methods](https://github.com/razvantomegea/angularfire-material-dashboard/blob/master/src/assets/img/firebase-config.png)
+![Firebase sign-in methods](https://github.com/razvantomegea/angularfire-material-dashboard/blob/master/src/assets/img/firebase-auth-methods.png)
 
 
 ## Development server
@@ -66,6 +69,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## References
 
 ## Donate
+Did you find this project useful and interesting? I worked hard on it...
 [Paypal Me](https://paypal.me/razvantomegea)
 
 ## License
