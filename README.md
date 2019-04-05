@@ -302,7 +302,8 @@ Run `npm run pack:osx|pack:win|pack:nix` to build and package the project for de
 artifacts will be stored in the `dist/platforms/` directory.
 
 ## Donate
-Did you find this project useful and interesting? I worked hard on it...
+Did you find this project useful and interesting?
+
 [Paypal Me](https://paypal.me/razvantomegea)
 
 ## License
