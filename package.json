@@ -97,7 +97,7 @@
     "@types/node": "8.9.4",
     "codelyzer": "4.2.1",
     "copy": "0.3.2",
-    "electron": "3.0.8",
+    "electron": "9.1.0",
     "electron-packager": "12.2.0",
     "firebase-tools": "6.5.1",
     "jasmine-core": "2.99.1",
